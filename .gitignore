@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Data
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Notebooks
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+
+# Config
+config/*.yaml
+!config/config.example.yaml
