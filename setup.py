@@ -11,7 +11,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 setup(
     name='stock_market_prediction',
     version='0.1.0',
-    author='Andres Quast, Will Akens, Alberto Alvarez',
+    author='Andres Quast, Will Akins, Alberto Alvarez',
     author_email='andresquast@gmail.com',
     description='A machine learning project for stock market prediction using price data and sentiment analysis',
     long_description=long_description,
