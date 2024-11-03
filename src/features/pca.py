@@ -26,7 +26,7 @@ class PCA(object):
             self.S: (min(N,D), ) numpy array
             self.V: (min(N,D), D) numpy array
         """
-        X_bar = X - np.mean(X, axis = 0)
+        X_bar = self.center(X, 0)
         U, S, V_t = np.linalg.svd(X_bar, full_matrices = False)
         
         self.U = U
@@ -45,10 +45,11 @@ class PCA(object):
         Return:
             X_new: (N,K) numpy array corresponding to data obtained by applying PCA on data
         """
-        X_bar = data - np.mean(data, axis = 0)
-        if (self.V == None):
-            self.fit(data)
+        X_bar = self.center(data, a = 0)
         V = self.V.T
         principle_directions = V[:, :K]
         X_transformed = np.dot(X_bar, principle_directions)
         return X_transformed
+    
+    def center(data: np.ndarray, a: int):
+        return data - np.mean(data, axis = a)
