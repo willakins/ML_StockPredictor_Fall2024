@@ -10,3 +10,8 @@ data = data_preprocessing_main()
 This data will be a dictionary where the key is the stock symbol (ex 'AAPL') and the value is another dictionary.
 This nested dictionary has two keys 'stock_data' and 'news_data' where their values is a pandas data frame
 """
+def main():
+    data = data_preprocessing_main()
+
+if __name__ == '__main__':
+    main()
