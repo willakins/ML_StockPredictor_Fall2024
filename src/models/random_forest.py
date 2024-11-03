@@ -8,7 +8,7 @@ Example of how to get cleaned and preprocessed data
 data = data_preprocessing_main()
 
 This data will be a dictionary where the key is the stock symbol (ex 'AAPL') and the value is another dictionary.
-This nested dictionary has two keys 'stock_data' and 'news_data' where their values is a pandas data frame
+This nested dictionary has two keys 'stock_data' and 'news_data' where their values is a pandas data frame with column labels PC#
 """
 def main():
     data = data_preprocessing_main()
