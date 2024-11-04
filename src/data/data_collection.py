@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 class DataCollector:
     """Main class for collecting stock market and news data."""
     
-    def __init__(self, config_path: str = os.path.abspath('config/config.yaml')):
+    def __init__(self, config_path: str = 'config/config.yaml'):
         """
         Initialize the data collector with configuration.
         
