@@ -22,12 +22,12 @@
       'header header header header header header' 
       'left middle middle middle middle right' 
       'footer footer footer footer footer footer';
-    /* grid-column-gap: 10px; - if you want gap between the columns */
+    grid-column-gap: 20px;
   } 
   
   .left,
   .right {
-    padding: 500px;
+    padding: 50px;
   }
   
   /* Style the left column */
@@ -54,7 +54,7 @@
   }
   
   /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media (max-width: 300px) {
+  @media (max-width: 100px) {
     .grid-container  {
       grid-template-areas: 
         'header header header header header header' 
