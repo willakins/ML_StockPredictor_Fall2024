@@ -26,9 +26,8 @@
   } 
   
   .left,
-  .middle,
   .right {
-    padding: 50px;
+    padding: 500px;
   }
   
   /* Style the left column */
@@ -55,7 +54,7 @@
   }
   
   /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media (max-width: 600px) {
+  @media (max-width: 300px) {
     .grid-container  {
       grid-template-areas: 
         'header header header header header header' 
