@@ -41,7 +41,7 @@
       <div class="header">
         <h1>Stock Market Trend Prediction - Midterm Checkpoint</h1>
       </div>
-      <div class="left"style="background-color:#aaa;"></div>
+      <div class="left"></div>
       <div class="middle">
         <h2><a id="Intro">Introduction/Background</a></h1>
           <br>
@@ -52,6 +52,7 @@
           of historical data to make predictions, yet their models still fail. This project takes the unique approach of attempting to 
           combine both historical data and news sentiment in order to develop a machine learning model with the ability to forecast 
           short-term stock price movements for S&P 500 companies.
+          <br>
           <br>
           Recent studies have explored various machine learning approaches for stock prediction. Jiang et al. (2021) used LSTM networks 
           for stock price prediction incorporating news sentiment [1]. Patel et al. (2020) compared various machine learning techniques 
@@ -80,9 +81,10 @@
           calculate more technical indicators for our stock. For news sentiment data, Alpha Vantage news was our source. 
           For each symbol, news articles were retrieved. Their text was cleaned and tokenized. Finally, we compute the sentiment, 
           polarity, and subjectivity of the article as separate features to use in our model. <br>
+          <br>
           Once we have obtained the data, we must preprocess it. For this stage of the project we wanted to simplify our data to 
           make debugging our model easier; therefore, PCA was employed. Although the number of features we had before using PCA 
-          was not very high, reducing to the most important features did help with improving the visualization of the model.
+          was not very high, reducing to the most important features did help with improving the visualization of the model.<br>
           <h5>ML Models</h5>
           <ul>
             <li> LSTM Neural Network 
@@ -102,7 +104,7 @@
           patterns due to it being an ensemble of decision trees. Secondly, since stock market data can have a lot of noise 
           (random actions by investors), overfitting is a large concern of any stock predicting model. Random Forest Classifier, 
           however, does not have to worry about overfitting as much as other models because each decision tree trains on a 
-          different subset of the data.
+          different subset of the data.<br>
           <h3 id="Results"><a id="Results">Results and Discussion</a> </h3>
           Fill in once model is done
           <h5>Quantitative Measures</h5>
@@ -117,7 +119,7 @@
           implement the LSTM Neural Network model and then finally implement the Support Vector Machine model. This order was 
           chosen based on the order this content will be taught in class, allowing us to use what we learn in lecture to more 
           effectively implement these models to our task.
-          <h3 id = "Ref"> <a id="Ref">References</a></h3> <br>
+          <h3 id = "Ref"> <a id="Ref">References</a></h3>
           [1] J. Li, G. Li, M. Liu, X. Zhu, and L. Wei,
           “A novel text-based framework for forecasting agricultural futures using massive online news headlines,
           ”International Journal of Forecasting, vol. 38, no. 1, pp. 35–50, Jan. 2022, doi: https://doi.org/10.1016/j.ijforecast.2020.02.002. <br>  
@@ -125,12 +127,12 @@
           “Predicting stock and stock price index movement using Trend Deterministic Data Preparation and machine learning techniques,
           ”Expert Systems with Applications, vol. 42, no. 1, pp. 259–268, Jan. 2015,doi: https://doi.org/10.1016/j.eswa.2014.07.040. <br>
           [3] F. Feng, H. Chen, X. He, J. Ding, M. Sun, and T.-S. Chua, “Enhancing Stock Movement Prediction with Adversarial Training,” arXiv.org, Jun. 01, 2019. https://arxiv.org/abs/1810.09936v2
-          <h3> Gnatt Chart</h3> <br>
-          <img src = "GnattChart_ML.png" alt = "Gnatt Chart"> <br>
-          <h3> Contribution Chart</h3> <br>
+          <h3> Gantt Chart</h3>
+          <img src = "GnattChart_ML.png" alt = "Gantt Chart" style="width:1000px;height:500px;"> <br>
+          <h3> Contribution Chart</h3>
           <img src="contribution.png" alt ="Contribution Chart">
       </div>
-      <div class="right" style="background-color:#aaa;"></div>
+      <div class="right"></div>
     </div>
   </body>
 </html>
