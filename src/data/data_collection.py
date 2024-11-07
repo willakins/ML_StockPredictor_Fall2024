@@ -18,7 +18,9 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
-import time  # Added for API rate limiting
+import time
+import nltk
+nltk.download('stopwords')
 
 # Set up logging
 logging.basicConfig(
