@@ -19,8 +19,9 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
 import time
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS as stopwords
 import nltk
-nltk.download('stopwords')
+import ssl
 
 # Set up logging
 logging.basicConfig(
@@ -58,7 +59,7 @@ class DataCollector:
         
         # Initialize NLP tools if sentiment analysis is enabled
         if self.sentiment_enabled:
-            self._setup_nlp()
+            self._setup_nlp()          
         
         # Create data directories if they don't exist
         self.raw_data_path = Path("data/raw")
@@ -89,12 +90,19 @@ class DataCollector:
         try:
             for package in ['punkt', 'stopwords', 'wordnet']:
                 try:
+                    _create_unverified_https_context = ssl._create_unverified_context
+                except AttributeError:
+                    pass
+                else:
+                    ssl._create_default_https_context = _create_unverified_https_context
+
+                try:
                     nltk.data.find(f'tokenizers/{package}')
                 except LookupError:
                     nltk.download(package, quiet=True)
             
             self.lemmatizer = WordNetLemmatizer()
-            self.stop_words = set(stopwords.words('english'))
+            self.stop_words = set(stopwords)
         except Exception as e:
             logger.error(f"Error setting up NLP tools: {str(e)}")
             raise
