@@ -1,0 +1,138 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Proposal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="nav-link active" href="#Intro">Introduction</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#Problem">Problem Definition</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#Methods">Methods</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#Results">Results</a>
+          </li>
+          <li class="nav-item"></li>
+            <a class="nav-link active" aria-current="page" href="#Ref">References</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+          </ul>
+      </div>
+    </div>
+  </nav>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h1>Stock Market Trend Prediction - Midterm Checkpoint</h1>
+      </div>
+      <div class="left"></div>
+      <div class="middle">
+        <h2><a id="Intro">Introduction/Background</a></h1>
+          <br>
+          The stock market is a complex adaptive system, consisting of individual components that interact in response to global events. 
+          This makes predicting stock market trends a challenging yet crucial task for investors and financial institutions. 
+          The large size of stock market historical data lends itself well to machine learning algorithms; however, no one has been 
+          able to create a successful model as historical data is not enough. Others have tried to utilize news sentiment data instead 
+          of historical data to make predictions, yet their models still fail. This project takes the unique approach of attempting to 
+          combine both historical data and news sentiment in order to develop a machine learning model with the ability to forecast 
+          short-term stock price movements for S&P 500 companies.
+          <br>
+          <br>
+          Recent studies have explored various machine learning approaches for stock prediction. Jiang et al. (2021) used LSTM networks 
+          for stock price prediction incorporating news sentiment [1]. Patel et al. (2020) compared various machine learning techniques 
+          for stock trend prediction [2]. Feng et al. (2019) developed a deep learning framework for stock prediction using technical 
+          indicators and textual data [3]. 
+          <br>
+          We will use a combination of datasets: 
+          <ul>
+            <li>Yahoo Finance API for historical stock price data of S&P 500 companies</li>
+            <li>Alpha Vantage News’ API for real-time and historical financial news articles[3]</li>
+            <li> Potential other sources (best to worst):
+              <ul>
+                <li>Web Scraping Yahoo Finance’s top stories</li>
+                <li>RSS feeds for quick (less accurate) data</li>
+                <li>Financial Reports and SEC Filings to make predictions</li>
+              </ul>
+            </li>
+          </ul>
+          <h2 id="Problem"><a id="Problem">Problem Definition</a></h2>
+          Accurate stock market prediction is crucial for optimizing investment strategies, managing financial risks, 
+          and understanding market dynamics. The challenge lies in developing a model that can effectively combine numerical 
+          time series data with textual sentiment information to predict short-term (1-5 days) stock price movements. <br>
+          <h3 id="Methods"><a id="Methods">Data Collection and Preprocessing</a></h3>
+          We need two types of data: technical indicators and news articles for our stocks. In order to get technical indicators, 
+          we utilized the yahoo finance API. This provided only basic stock details, so we implemented our own functions to 
+          calculate more technical indicators for our stock. For news sentiment data, Alpha Vantage news was our source. 
+          For each symbol, news articles were retrieved. Their text was cleaned and tokenized. Finally, we compute the sentiment, 
+          polarity, and subjectivity of the article as separate features to use in our model. <br>
+          <br>
+          Once we have obtained the data, we must preprocess it. For this stage of the project we wanted to simplify our data to 
+          make debugging our model easier; therefore, PCA was employed. Although the number of features we had before using PCA 
+          was not very high, reducing to the most important features did help with improving the visualization of the model.<br>
+          <h5>ML Models</h5>
+          <ul>
+            <li> LSTM Neural Network 
+              <ul> <li> Useful for sequential data, this will be ideal for the relation of our data for the forecasting nature of our problem[1].</li></ul>
+            </li>
+            <li> Random Forest Classifier
+              <ul> <li>Multiple decision trees, that outputs the mode, good for when data can be noisy as stocks can.</li></ul>
+            </li>
+            <li> Support Vector Machine
+              <ul> <li>Models used for classification and regression, good for classification of stock trends.</li></ul>
+            </li>
+          </ul>
+          At this stage of the project, our group has successfully implemented the Random Forest Classifier model. We chose to 
+          implement this model for two main reasons: its ability to accurately predict non-linear patterns in data and its 
+          resistance against overfitting. The stock market is an incredibly non-linear pattern with many factors at play; 
+          therefore, the Random Forest Classifier model will perform better than other models in capturing those non-linear 
+          patterns due to it being an ensemble of decision trees. Secondly, since stock market data can have a lot of noise 
+          (random actions by investors), overfitting is a large concern of any stock predicting model. Random Forest Classifier, 
+          however, does not have to worry about overfitting as much as other models because each decision tree trains on a 
+          different subset of the data.<br>
+          <h3 id="Results"><a id="Results">Results and Discussion</a> </h3>
+          Fill in once model is done
+          <h5>Quantitative Measures</h5>
+          <ul>
+            <li>Achieve an accuracy of at least 60% in predicting the direction of stock price movements</li>
+            <li>Develop a model that outperforms a simple buy-and-hold strategy in terms of Sharpe Ratio (> 1.5)</li>
+            <li>Mean Absolute Percentage Error for price predictions (≤ 5%)</li>
+            <li>F1 Score, a harmonic mean of precision, for trend classification (≥ 0.65)</li>
+          </ul>
+          <h5>Next Steps</h5>
+          Now that we have fully implemented our first model, our next steps are to implement the other two. We plan to first 
+          implement the LSTM Neural Network model and then finally implement the Support Vector Machine model. This order was 
+          chosen based on the order this content will be taught in class, allowing us to use what we learn in lecture to more 
+          effectively implement these models to our task.
+          <h3 id = "Ref"> <a id="Ref">References</a></h3>
+          [1] J. Li, G. Li, M. Liu, X. Zhu, and L. Wei,
+          “A novel text-based framework for forecasting agricultural futures using massive online news headlines,
+          ”International Journal of Forecasting, vol. 38, no. 1, pp. 35–50, Jan. 2022, doi: https://doi.org/10.1016/j.ijforecast.2020.02.002. <br>  
+          [2] J. Patel, S. Shah, P. Thakkar, and K. Kotecha,
+          “Predicting stock and stock price index movement using Trend Deterministic Data Preparation and machine learning techniques,
+          ”Expert Systems with Applications, vol. 42, no. 1, pp. 259–268, Jan. 2015,doi: https://doi.org/10.1016/j.eswa.2014.07.040. <br>
+          [3] F. Feng, H. Chen, X. He, J. Ding, M. Sun, and T.-S. Chua, “Enhancing Stock Movement Prediction with Adversarial Training,” arXiv.org, Jun. 01, 2019. https://arxiv.org/abs/1810.09936v2
+          <h3> Gantt Chart</h3>
+          <img src = "GnattChart.png" alt = "Gantt Chart" style="width:1000px;height:500px;"> <br>
+          <h3> Contribution Chart</h3>
+          <img src="Contribution.png" alt ="Contribution Chart">
+      </div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

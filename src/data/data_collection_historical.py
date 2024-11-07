@@ -62,7 +62,7 @@ class HistoricalNewsCollector:
             }
             
             body = {
-                "queryString": f""{symbol}"",
+                "queryString": f"{symbol}",
                 "queryContext": {
                     "curations": ["ARTICLES"]
                 },

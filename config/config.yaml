@@ -1,0 +1,45 @@
+data:
+  start_date: "2020-01-01"
+  end_date: "2024-01-01"
+  stock:
+    ticker_list:
+      - AAPL
+      - GOOG
+      - MSFT
+  output:
+    raw_stock_data: "data/raw/stock_data.csv"
+    raw_news_data: "data/raw/news_data.csv"
+    processed_data: "data/processed/combined_data.csv"
+
+api:
+  alpha_vantage_key: "5O7VTPF7G6OFH4L4"
+  marketaux_key: "your_key"
+  ft_archive_key: "your_key"
+
+features:
+  technical_indicators:
+    - SMA
+    - RSI
+    - MACD
+    - Volatility
+    - Volume_Change
+  sentiment_analysis:
+    enabled: true
+    metrics:
+      - polarity
+      - subjectivity
+    historical_sources:
+      - marketaux
+      - ft_archive
+      - sec_filings
+      - arxiv
+
+models:
+  lstm:
+    epochs: 100
+    batch_size: 32
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+  svm:
+    kernel: "rbf"
