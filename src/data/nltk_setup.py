@@ -1,3 +1,7 @@
+"""
+Running this file brings up a window to download NLTK resources.
+Shouldn't be necessary to run this to run data_collection.py, but if running that causes errors, try running this.
+"""
 def main():
     import nltk
     import ssl
