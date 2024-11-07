@@ -6,6 +6,8 @@ import yaml
 import logging
 from textblob import TextBlob
 from datetime import datetime
+import nltk
+nltk.download('stopwords')
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
