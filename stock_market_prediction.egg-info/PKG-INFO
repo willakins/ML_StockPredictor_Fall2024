@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: stock_market_prediction
+Version: 0.1.0
+Summary: A machine learning project for stock market prediction using price data and sentiment analysis
+Home-page: https://github.com/willakins/ML_StockPredictor_Fall2024
+Author: Andres Quast, Will Akins, Alberto Alvarez
+Author-email: andresquast@gmail.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=1.5.0
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: scikit-learn>=1.0.0
+Requires-Dist: tensorflow>=2.0.0
+Requires-Dist: yfinance>=0.1.70
+Requires-Dist: nltk>=3.6.0
+Requires-Dist: textblob>=0.15.3
+Requires-Dist: pytest>=7.0.0
+Requires-Dist: jupyter>=1.0.0
+Requires-Dist: pyyaml>=6.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=3.0.0; extra == "dev"
+Requires-Dist: flake8>=4.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: isort>=5.0.0; extra == "dev"
+Requires-Dist: mypy>=0.9.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=4.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.0.0; extra == "docs"
+
+# Stock Market Prediction
+
+A machine learning project for predicting stock market trends using historical price data and sentiment analysis.
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/willakins/ML_StockPredictor_Fall2024
+cd stock_market_prediction
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install the package
+pip install -e .
+
+# For development installations:
+pip install -e ".[dev]"
+
+## Project Structure
+stock_market_prediction/
+│
+├── data/                    # Data directory
+│   ├── raw/                # Raw data downloads
+│   ├── processed/          # Cleaned and processed data
+│   └── external/           # External data sources
+│
+├── src/                    # Source code
+│   ├── data/              # Data collection and processing
+│   ├── features/          # Feature engineering
+│   ├── models/            # ML models
+│   └── visualization/     # Data visualization
+│
+├── notebooks/             # Jupyter notebooks
+├── tests/                 # Unit tests
+├── config/               # Configuration files
+├── requirements.txt      # Project dependencies
+└── setup.py             # Package installation
+
+
+## Keys
+Alpha Vantage API key: 5O7VTPF7G6OFH4L4
