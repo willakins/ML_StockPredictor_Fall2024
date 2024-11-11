@@ -23,35 +23,29 @@ class FeatureReducer:
             self.stock_dict - dict: Dictionary with PCA-transformed 'stock_data' and 'news_data'.
         """
         for stock, data in self.stock_data.items():
-            # Get stock and news data
             stock_data = data['stock_data']
             news_data = data['news_data']
 
-            # Fix missing values
             stock_data = stock_data.fillna(0)
             news_data = news_data.fillna(0)
 
-            # Standardize stock data
-            stock_scaler = StandardScaler()
+            # Standardize data for PCA
             numerical_stock_data = self.convert_date(stock_data)
-            stock_data_scaled = stock_scaler.fit_transform(numerical_stock_data)
-            
-            # Standardize news data
-            news_scaler = StandardScaler()
             numerical_news_data = self.make_news_numerical(news_data)
+            stock_scaler = StandardScaler()
+            news_scaler = StandardScaler()
+            stock_data_scaled = stock_scaler.fit_transform(numerical_stock_data)
             news_data_scaled = news_scaler.fit_transform(numerical_news_data)
 
-            # Apply PCA on stock data
+            # Apply PCA on data
             pca_stock = PCA(n_components = self.n_components_stock)
-            stock_data_pca = pca_stock.fit_transform(stock_data_scaled)
-            stock_data_pca = pd.DataFrame(stock_data_pca, columns=[f'PC{i+1}_stock' for i in range(self.n_components_stock)])
-
-            # Apply PCA on news data
             pca_news = PCA(n_components = self.n_components_news)
+            stock_data_pca = pca_stock.fit_transform(stock_data_scaled)
             news_data_pca = pca_news.fit_transform(news_data_scaled)
+            stock_data_pca = pd.DataFrame(stock_data_pca, columns=[f'PC{i+1}_stock' for i in range(self.n_components_stock)])
             news_data_pca = pd.DataFrame(news_data_pca, columns=[f'PC{i+1}_news' for i in range(self.n_components_news)])
 
-            # Update dictionary with PCA-transformed data
+            # Replace current data with new PCA data
             self.stock_data[stock]['stock_data'] = stock_data_pca
             self.stock_data[stock]['news_data'] = news_data_pca
 
