@@ -106,7 +106,49 @@
           however, does not have to worry about overfitting as much as other models because each decision tree trains on a 
           different subset of the data.<br>
           <h3 id="Results"><a id="Results">Results and Discussion</a> </h3>
-          Fill in once model is done
+          <h5>Random Forest Classifier</h5>
+
+          The Random Forest Classifier model performed very poorly, with roughly 50% accuracy.
+          It classifies stock trends with a 50% accuracy, which means it's about as efficient as flipping a coin.
+          This is due to inefficient features being selected. When training the model, we created Permutation Feature 
+          Importance (PFI) charts, which show how a model's performance is impacted if we shuffle the values of an individual feature.
+          We will also use a confusion matrix, which displays false positives, true negatives, etc., to gauge the accuracy of our upward/downward trend
+          classifications. 
+
+          On the first iteration of the model (~50% accurate), we yielded the following charts:
+          <img src="./charts/rfc/permutation_feature_importance_1.png" />
+          <img src="./charts/rfc/confusion_matrix_1.png" />
+
+          According to the PFI chart, MACD, Volatility, and Open were the most importance features, since shuffling values
+          negatively impacted the performance of the model. On the contrary,
+          SMA5 and SMA20 may have contributed to the model overfitting the data, indicated by the strong negative direction.
+          The confusion matrix further shows the inaccuracy of the model, since we could see that the classifications were
+          evenly distributed. 
+
+          To try improving the performance of the model, we used the information from the PFI chart
+          and removed the SMA5 and SMA20 features. The second iteration of the model (~50% accurate) yielded
+          the following charts:
+          <img src="./charts/rfc/permutation_feature_importance_2.png" />
+          <img src="./charts/rfc/confusion_matrix_2.png" />
+
+          This time, it seems that the only significant feature was MACD, which is concerning. None of the other features
+          were significantly affecting the performance of the model. The confusion matrix tells the same story as before.
+
+          Removing more features proves unsuccessful, likely because our model would have too little features.
+          The third iteration of the model (~47% accurate) yielded the following charts:
+          <img src="./charts/rfc/permutation_feature_importance_3.png" />
+          <img src="./charts/rfc/confusion_matrix_3.png" />
+
+          The PFI chart is telling us that ALL the features may be negatively impacting the model. Furthermore,
+          the confusion matrix shows a greater sum along the incorrect predictions than the correct predictions.
+
+          <h6> Next Steps </h6>
+
+          We need to reconsider our features, as they seem to not be correlated enough (if at all!) with the data set.
+          Many of these features are simply performance metrics of the stock over some period of time. We should only
+          use a couple of these to not take away from other features that are not based on performance. Speaking of,
+          we should also look into using more context-sensitive features, like a sentiment analysis score for the stock's company.
+
           <h5>Quantitative Measures</h5>
           <ul>
             <li>Achieve an accuracy of at least 60% in predicting the direction of stock price movements</li>
@@ -114,6 +156,7 @@
             <li>Mean Absolute Percentage Error for price predictions (≤ 5%)</li>
             <li>F1 Score, a harmonic mean of precision, for trend classification (≥ 0.65)</li>
           </ul>
+
           <h5>Next Steps</h5>
           Now that we have fully implemented our first model, our next steps are to implement the other two. We plan to first 
           implement the LSTM Neural Network model and then finally implement the Support Vector Machine model. This order was 
