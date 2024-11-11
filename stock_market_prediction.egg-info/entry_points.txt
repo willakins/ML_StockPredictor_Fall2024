@@ -1,0 +1,2 @@
+[console_scripts]
+collect-data = src.data.data_collection:main

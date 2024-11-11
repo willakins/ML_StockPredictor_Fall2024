@@ -23,3 +23,5 @@ data/processed/*
 # Config
 config/*.yaml
 !config/config.example.yaml
+
+.DS_Store
