@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, RobustScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Bidirectional
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tensorflow.keras.regularizers import l2
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Bidirectional
+from tensorflow.python.keras.optimizers import Adam
+from tensorflow.python.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+from tensorflow.python.keras.regularizers import l2
 import yaml
 import logging
 
