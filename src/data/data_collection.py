@@ -22,6 +22,7 @@ import time
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS as stopwords
 import nltk
 import ssl
+from pathlib import Path
 
 # Set up logging
 logging.basicConfig(
@@ -41,34 +42,37 @@ class DataCollector:
             config_path (str): Path to configuration file
         """
         self.config = self._load_config(config_path)
-    
-        # Access data configuration
-        self.symbols = self.config['data'].get('ticker_list', [])  # Changed from 'symbols'
-        if not self.symbols:  # If ticker_list is empty, try to get from stock section
-            self.symbols = self.config['data'].get('stock', {}).get('ticker_list', [])
-        
-        self.start_date = self.config['data'].get('start_date')
-        self.end_date = self.config['data'].get('end_date')
-        
-        # Get API configuration
-        self.api_key = self.config['api']['alpha_vantage_key']
-        
-        # Get feature configuration
-        self.technical_indicators = self.config['features']['technical_indicators']
-        self.sentiment_enabled = self.config['features']['sentiment_analysis']['enabled']
-        
-        # Initialize NLP tools if sentiment analysis is enabled
-        if self.sentiment_enabled:
-            self._setup_nlp()          
-        
-        # Create data directories if they don't exist
-        self.raw_data_path = Path("data/raw")
-        self.processed_data_path = Path("data/processed")
-        self._setup_directories()
-        
-        # Log configuration
-        logger.info(f"Initialized DataCollector with symbols: {self.symbols}")
-        logger.info(f"Date range: {self.start_date} to {self.end_date}")
+
+        # Access data configuration with error handling
+        try:
+            self.symbols = self.config.get('data', {}).get('ticker_list', [])
+            self.start_date = self.config.get('data', {}).get('start_date')
+            self.end_date = self.config.get('data', {}).get('end_date')
+            
+            # Get API configuration
+            self.api_key = self.config.get('api', {}).get('alpha_vantage_key')
+            if not self.api_key:
+                raise ValueError("Alpha Vantage API key not found in config")
+            
+            # Get feature configuration
+            features = self.config.get('features', {})
+            self.technical_indicators = features.get('technical_indicators', [])
+            self.sentiment_enabled = features.get('sentiment_analysis', {}).get('enabled', False)
+
+            # Initialize paths
+            self.raw_data_path = Path('data/raw')
+            self.processed_data_path = Path('data/processed')
+            
+            # Create directories if they don't exist
+            self._setup_directories()
+            
+            # Setup NLP if sentiment analysis is enabled
+            if self.sentiment_enabled:
+                self._setup_nlp()
+            
+        except Exception as e:
+            logger.error(f"Error initializing DataCollector with config: {str(e)}")
+            raise
 
     @staticmethod
     def _load_config(config_path: str) -> dict:

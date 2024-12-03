@@ -13,9 +13,23 @@ nltk.download('stopwords')
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def load_config():
-    """Load configuration from yaml file."""
-    config_path = Path("config/config.yaml")
+def load_config(config_path=None):
+    """
+    Load configuration from yaml file.
+
+    Args:
+        config_path (str, optional): Path to config file. If None, uses default path.
+    """
+    if config_path is None:
+        # Use default path relative to project root
+        file_dir = Path(__file__).parent.parent.parent
+        config_path = file_dir / "config" / "config.yaml"
+    else:
+        config_path = Path(config_path)
+    
+    if not config_path.exists():
+        raise FileNotFoundError(f"Config file not found at {config_path}")
+        
     with open(config_path, "r") as file:
         return yaml.safe_load(file)
 
