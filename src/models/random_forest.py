@@ -3,7 +3,6 @@ import sys
 import os
 import logging
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../features')))
-from data_preprocessing import main as data_preprocessing_main
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np

@@ -97,14 +97,16 @@
               <ul> <li>Models used for classification and regression, good for classification of stock trends.</li></ul>
             </li>
           </ul>
-          At this stage of the project, our group has successfully implemented the Random Forest Classifier model. We chose to 
-          implement this model for two main reasons: its ability to accurately predict non-linear patterns in data and its 
-          resistance against overfitting. The stock market is an incredibly non-linear pattern with many factors at play; 
-          therefore, the Random Forest Classifier model will perform better than other models in capturing those non-linear 
-          patterns due to it being an ensemble of decision trees. Secondly, since stock market data can have a lot of noise 
-          (random actions by investors), overfitting is a large concern of any stock predicting model. Random Forest Classifier, 
-          however, does not have to worry about overfitting as much as other models because each decision tree trains on a 
-          different subset of the data.<br>
+          We applied three unique models to our problem to determine what architecture most accurately predicted stock market trends. <br>
+	        The first model applied was Long short-term memory or LSTM. LSTM is a type of recurrent neural network (RNN) aimed at mitigating the vanishing gradient problem. 
+          LSTM lends itself well to our problem as its memory retention characteristics allows for our model to learn from both short-term fluctuations and long-term trends. <br><br>
+	        The second model applied was the Random Forest Classifier. Random Forest is an ensemble learning method that combines multiple decision trees to improve predictive accuracy 
+          and reduce overfitting. This model is well-suited for our problem because it can handle a large number of features and capture complex relationships between variables. 
+          Its ability to aggregate predictions from numerous trees helps to enhance robustness and accuracy, making it effective for classifying stock market trends where patterns may be influenced by various factors.<br><br>
+          The third model applied was the Support Vector Machine (SVM). SVM is a powerful supervised learning algorithm used for classification tasks. It works by finding the optimal hyperplane that separates different classes 
+          in the feature space, maximizing the margin between them. SVM is particularly effective for our problem because it can handle high-dimensional data and complex decision boundaries. Its ability to generalize well with a 
+          smaller amount of training data makes it suitable for predicting stock market trends, where clear distinctions between price movements are often subtle and nonlinear.
+          <br>
           <h3 id="Results"><a id="Results">Results and Discussion</a> </h3>
           <h5>Random Forest Classifier</h5>
 
@@ -171,7 +173,7 @@
           ”Expert Systems with Applications, vol. 42, no. 1, pp. 259–268, Jan. 2015,doi: https://doi.org/10.1016/j.eswa.2014.07.040. <br>
           [3] F. Feng, H. Chen, X. He, J. Ding, M. Sun, and T.-S. Chua, “Enhancing Stock Movement Prediction with Adversarial Training,” arXiv.org, Jun. 01, 2019. https://arxiv.org/abs/1810.09936v2
           <h3> Gantt Chart</h3>
-          <img src = "GnattChart.png" alt = "Gantt Chart" style="width:1000px;height:500px;"> <br>
+          <img src = "GanttChart.png" alt = "Gantt Chart" style="width:1000px;height:500px;"> <br>
           <h3> Contribution Chart</h3>
           <img src="Contribution.png" alt ="Contribution Chart">
       </div>
