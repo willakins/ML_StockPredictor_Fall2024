@@ -25,7 +25,7 @@ def create_chart(model_name, companies):
 
 if __name__ == '__main__':
     companies = ['AAPL', 'GOOG', 'MSFT']
-    models = ['svm', 'lstm']
+    models = ['SVM', 'LSTM']
 
     print('Creating charts...')
     for model in models:
