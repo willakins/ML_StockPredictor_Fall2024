@@ -1,0 +1,19 @@
+=== Model Performance Metrics ===
+Accuracy: 0.6043
+Precision: 0.5660
+Recall: 0.9610
+F1: 0.7124
+Roc_auc: 0.7371
+Cv_f1_mean: 0.6331
+Cv_f1_std: 0.1507
+
+=== Cross-validation Results ===
+Mean F1: 0.6331 (+/- 0.3013)
+
+=== Top Feature Importance ===
+PC5_stock: 0.2360
+PC4_stock: 0.2186
+PC3_stock: 0.1563
+PC2_stock: 0.1523
+PC1_stock: 0.1473
+PC1_news: 0.0894

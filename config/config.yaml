@@ -1,4 +1,9 @@
+# Data Collection Settings
 data:
+  ticker_list:
+    - AAPL
+    - GOOG
+    - MSFT
   start_date: "2020-01-01"
   end_date: "2024-01-01"
   stock:
@@ -11,11 +16,13 @@ data:
     raw_news_data: "data/raw/news_data.csv"
     processed_data: "data/processed/combined_data.csv"
 
+# API Keys
 api:
   alpha_vantage_key: "5O7VTPF7G6OFH4L4"
   marketaux_key: "your_key"
   ft_archive_key: "your_key"
 
+# Features section needs to be at top level
 features:
   technical_indicators:
     - SMA
@@ -28,18 +35,48 @@ features:
     metrics:
       - polarity
       - subjectivity
-    historical_sources:
+    sources:
       - marketaux
       - ft_archive
       - sec_filings
       - arxiv
 
-models:
+preprocessing:
+  remove_missing: True
+  fill_method: "ffill"
+  normalize: True
+
+model:
   lstm:
-    epochs: 100
+    units: [64, 32]
+    dropout: 0.2
+    optimizer: "adam"
+    loss: "mse"
+    validation_split: 0.2
+    epochs: 150
     batch_size: 32
+    sequence_length: 30
+    learning_rate: 0.0001
+  
   random_forest:
     n_estimators: 100
     max_depth: 10
+    min_samples_split: 2
+    min_samples_leaf: 1
+  
   svm:
     kernel: "rbf"
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/preprocessed"
+  raw_stock_data: "data/raw/stock_data.csv"
+  raw_news_data: "data/raw/news_data.csv"
+  processed_combined_data: "data/processed/combined_data.csv"
+  models: "models"
+  results: "results"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/stock_prediction.log"
