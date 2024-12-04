@@ -22,6 +22,8 @@ def main():
     try:
         symbols = ['AAPL', 'GOOG', 'MSFT']
         results = []
+        predictions_dict = {}
+        
         for symbol in symbols:
             logging.info(f"Processing {symbol}...")
             df = load_data(symbol)
@@ -32,6 +34,10 @@ def main():
             history = predictor.train(X_train, y_train, X_val, y_val)
             logging.info("Making predictions...")
             predictions = predictor.predict(X_val)
+            
+            # Store predictions
+            predictions_dict[symbol] = predictions
+            
             metrics = predictor.evaluate(predictor.original_prices, predictions)
             results.append({
                 'Symbol': symbol,
@@ -40,6 +46,18 @@ def main():
                 'Accuracy': metrics['Accuracy'],
                 'F1 Score': metrics['F1 Score']
             })
+        
+        # Save results to CSV
+        results_df = pd.DataFrame(results)
+        results_df.to_csv('data/lstm_results.csv', index=False)
+        
+        # Save predictions for each symbol
+        for symbol, preds in predictions_dict.items():
+            pd.DataFrame(preds, columns=['Predicted_Price']).to_csv(
+                f'data/lstm_predictions_{symbol}.csv', index=False)
+            
+        logging.info("Results saved to data/lstm_results.csv")
+        logging.info("Predictions saved as lstm_predictions_[SYMBOL].csv")
         
         logging.info("Final Results:")
         for result in results:
