@@ -5,13 +5,16 @@ __pycache__/
 *.so
 .Python
 venv/
+venv_tf/
 ENV/
 
 # Data
 data/raw/*
 data/processed/*
+data/preprocessed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+!data/preprocessed/.gitkeep
 
 # Notebooks
 .ipynb_checkpoints
@@ -24,4 +27,9 @@ data/processed/*
 config/*.yaml
 !config/config.example.yaml
 
+# OS-specific
 .DS_Store
+**/.DS_Store
+
+# Results
+results/

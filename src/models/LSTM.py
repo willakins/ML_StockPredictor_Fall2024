@@ -114,11 +114,11 @@ class LSTMStockPredictor:
             verbose=1
         )
         return history
-    
+
     def predict(self, X):
         """
         Make predictions using the trained model.
-		
+
         Args:
             X: Input sequences of shape (samples, sequence_length, features)
         Returns:
