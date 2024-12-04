@@ -1,6 +1,8 @@
 import os
 import sys
 import logging
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../features')))
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from datetime import datetime

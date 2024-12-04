@@ -27,9 +27,14 @@ data/preprocessed/*
 config/*.yaml
 !config/config.example.yaml
 
+<<<<<<< HEAD
 # OS-specific
 .DS_Store
 **/.DS_Store
 
 # Results
 results/
+=======
+.DS_Store
+.DS_Store
+>>>>>>> c816adcde769d89d42aa1a9f557b04e2772b67a1
