@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2024-12-03 19:59:11,701 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
 2024-12-03 19:59:11,701 - INFO - Loading preprocessed data...
 2024-12-03 19:59:11,716 - INFO - 
@@ -19,19 +20,420 @@ Processed MSFT:
 Final combined shape: (3018, 8)
 2024-12-03 19:59:11,736 - INFO - Analyzing data distribution...
 2024-12-03 19:59:11,739 - INFO - 
+=======
+2024-12-03 16:33:57,845 - __main__ - INFO - === Starting Stock Prediction Model Pipeline ===
+2024-12-03 16:33:57,845 - __main__ - INFO - Step 1: Loading data...
+2024-12-03 16:33:57,845 - __main__ - INFO - Loading preprocessed data...
+2024-12-03 16:33:57,862 - __main__ - INFO - 
+Data quality metrics for AAPL:
+2024-12-03 16:33:57,862 - __main__ - INFO - Shape: (1006, 10)
+2024-12-03 16:33:57,863 - __main__ - INFO - Missing values: 1912
+2024-12-03 16:33:57,865 - __main__ - INFO - Target distribution:
+Returns
+1    0.524851
+0    0.475149
+Name: proportion, dtype: float64
+2024-12-03 16:33:57,876 - __main__ - INFO - 
+Data quality metrics for GOOG:
+2024-12-03 16:33:57,876 - __main__ - INFO - Shape: (1006, 10)
+2024-12-03 16:33:57,876 - __main__ - INFO - Missing values: 1912
+2024-12-03 16:33:57,877 - __main__ - INFO - Target distribution:
+Returns
+1    0.538767
+0    0.461233
+Name: proportion, dtype: float64
+2024-12-03 16:33:57,886 - __main__ - INFO - 
+Data quality metrics for MSFT:
+2024-12-03 16:33:57,886 - __main__ - INFO - Shape: (1006, 10)
+2024-12-03 16:33:57,887 - __main__ - INFO - Missing values: 1912
+2024-12-03 16:33:57,887 - __main__ - INFO - Target distribution:
+Returns
+1    0.525845
+0    0.474155
+Name: proportion, dtype: float64
+2024-12-03 16:33:57,887 - __main__ - INFO - Analyzing data distribution...
+2024-12-03 16:33:57,888 - __main__ - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 19:59:11,749 - INFO - 
+=======
+2024-12-03 16:33:57,896 - __main__ - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
+<<<<<<< HEAD
 2024-12-03 19:59:11,750 - INFO - 
+=======
+2024-12-03 16:33:57,897 - __main__ - INFO - 
+Missing values:
+Unnamed: 0       0
+PC1_stock        0
+PC2_stock        0
+PC3_stock        0
+PC4_stock        0
+PC5_stock        0
+Unnamed: 0    2868
+PC1_news      2868
+Target           0
+Ticker           0
+dtype: int64
+2024-12-03 16:33:58,451 - __main__ - INFO - Step 2: Preparing features...
+2024-12-03 16:33:58,451 - __main__ - INFO - Preparing features and target...
+2024-12-03 16:33:58,452 - __main__ - INFO - Removed 2868 rows with NaN values
+2024-12-03 16:33:58,452 - __main__ - INFO - 
+Feature statistics:
+2024-12-03 16:33:58,461 - __main__ - INFO - 
+       Unnamed: 0   PC1_stock   PC2_stock   PC3_stock   PC4_stock   PC5_stock  Unnamed: 0      PC1_news
+count  150.000000  150.000000  150.000000  150.000000  150.000000  150.000000  150.000000  1.500000e+02
+mean    24.500000   -5.408100    0.630666   -1.296149    0.344383    0.253175   24.500000  2.368476e-17
+std     14.479214    0.826911    1.375078    0.563898    2.079244    1.517096   14.479214  1.278966e+00
+min      0.000000   -7.957308   -2.759283   -2.338738   -4.670216   -4.327315    0.000000 -3.151422e+00
+25%     12.000000   -5.966223   -0.464419   -1.708589   -0.727770   -0.843865   12.000000 -9.192134e-01
+50%     24.500000   -5.449599    0.609059   -1.187844    0.553065    0.485898   24.500000 -2.657716e-01
+75%     37.000000   -4.862407    1.679930   -0.976862    1.500202    1.379352   37.000000  8.049181e-01
+max     49.000000   -3.761333    3.467425    0.672100    5.681638    2.940370   49.000000  4.929011e+00
+2024-12-03 16:33:58,462 - __main__ - INFO - 
+Data split information:
+2024-12-03 16:33:58,462 - __main__ - INFO - Training set shape: (125, 8)
+2024-12-03 16:33:58,462 - __main__ - INFO - Test set shape: (25, 8)
+2024-12-03 16:33:58,462 - __main__ - INFO - Training set class distribution:
+Target
+1    0.52
+0    0.48
+Name: proportion, dtype: float64
+2024-12-03 16:33:58,462 - __main__ - INFO - Test set class distribution:
+Target
+0    0.52
+1    0.48
+Name: proportion, dtype: float64
+2024-12-03 16:33:58,462 - __main__ - INFO - Step 3: Training model...
+2024-12-03 16:33:58,462 - __main__ - INFO - Training Random Forest model...
+2024-12-03 16:33:59,173 - __main__ - INFO - 
+Cross-validation scores: [0.56 0.8  0.64 0.72 0.44]
+2024-12-03 16:33:59,174 - __main__ - INFO - Mean CV score: 0.6320 (+/- 0.2499)
+2024-12-03 16:33:59,341 - __main__ - INFO - 
+Top 10 most important features:
+2024-12-03 16:33:59,343 - __main__ - INFO - 
+      feature  importance
+5   PC5_stock    0.188243
+4   PC4_stock    0.148261
+2   PC2_stock    0.144061
+0  Unnamed: 0    0.121074
+6  Unnamed: 0    0.117705
+7    PC1_news    0.110238
+1   PC1_stock    0.095502
+3   PC3_stock    0.074914
+2024-12-03 16:33:59,343 - __main__ - INFO - Step 4: Evaluating model...
+2024-12-03 16:33:59,343 - __main__ - INFO - 
+=== DETAILED MODEL EVALUATION ===
+2024-12-03 16:33:59,343 - __main__ - INFO - 
+Class Distributions:
+2024-12-03 16:33:59,343 - __main__ - INFO - Training set:
+Target
+1    0.52
+0    0.48
+Name: proportion, dtype: float64
+2024-12-03 16:33:59,343 - __main__ - INFO - Test set:
+Target
+0    0.52
+1    0.48
+Name: proportion, dtype: float64
+2024-12-03 16:33:59,344 - __main__ - INFO - Predictions:
+1    0.84
+0    0.16
+Name: proportion, dtype: float64
+2024-12-03 16:33:59,344 - __main__ - INFO - 
+Confusion Matrix:
+2024-12-03 16:33:59,344 - __main__ - INFO -             Predicted
+2024-12-03 16:33:59,353 - __main__ - INFO -              0    1
+2024-12-03 16:33:59,353 - __main__ - INFO - Actual 0 |   0   13
+2024-12-03 16:33:59,353 - __main__ - INFO -        1 |   4    8
+2024-12-03 16:33:59,357 - __main__ - INFO - 
+Prediction Probability Distribution:
+2024-12-03 16:33:59,361 - __main__ - INFO - 
+(0.115, 0.178]    0.08
+(0.178, 0.241]    0.00
+(0.241, 0.303]    0.00
+(0.303, 0.366]    0.04
+(0.366, 0.428]    0.04
+(0.428, 0.491]    0.00
+(0.491, 0.553]    0.04
+(0.553, 0.616]    0.40
+(0.616, 0.679]    0.24
+(0.679, 0.741]    0.16
+Name: proportion, dtype: float64
+2024-12-03 16:33:59,362 - __main__ - INFO - 
+Detailed Classification Report:
+2024-12-03 16:33:59,364 - __main__ - INFO - 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        13
+           1       0.38      0.67      0.48        12
+
+    accuracy                           0.32        25
+   macro avg       0.19      0.33      0.24        25
+weighted avg       0.18      0.32      0.23        25
+
+2024-12-03 16:33:59,364 - __main__ - INFO - Step 5: Generating visualization plots...
+2024-12-03 16:33:59,364 - __main__ - INFO - Plotting feature importance...
+2024-12-03 16:33:59,523 - __main__ - INFO - Plotting confusion matrix...
+2024-12-03 16:33:59,662 - __main__ - INFO - Plotting ROC curve...
+2024-12-03 16:33:59,758 - __main__ - INFO - Plotting probability distribution...
+2024-12-03 16:33:59,847 - __main__ - INFO - Step 6: Saving model and results...
+2024-12-03 16:33:59,847 - __main__ - INFO - Saving model and results...
+2024-12-03 16:33:59,908 - __main__ - INFO - Model and results saved to model_results/rf_v1_20241203_163359
+2024-12-03 16:33:59,909 - __main__ - INFO - 
+=== Model Training Summary ===
+2024-12-03 16:33:59,909 - __main__ - INFO - Model saved to: model_results/rf_v1_20241203_163359
+2024-12-03 16:33:59,909 - __main__ - INFO - 
+Final Metrics:
+2024-12-03 16:33:59,909 - __main__ - INFO - Accuracy: 0.3200
+2024-12-03 16:33:59,909 - __main__ - INFO - Precision: 0.3810
+2024-12-03 16:33:59,909 - __main__ - INFO - Recall: 0.6667
+2024-12-03 16:33:59,909 - __main__ - INFO - F1: 0.4848
+2024-12-03 16:33:59,909 - __main__ - INFO - Roc_auc: 0.1859
+2024-12-03 16:33:59,909 - __main__ - INFO - 
+=== Pipeline completed successfully ===
+2024-12-03 16:33:59,909 - __main__ - INFO - Cleaning up resources...
+2024-12-03 16:37:00,581 - __main__ - INFO - === Starting Stock Prediction Model Pipeline ===
+2024-12-03 16:37:00,583 - __main__ - INFO - Step 1: Loading data...
+2024-12-03 16:37:00,583 - __main__ - INFO - Loading preprocessed data...
+2024-12-03 16:37:00,603 - __main__ - INFO - 
+Data quality metrics for AAPL:
+2024-12-03 16:37:00,603 - __main__ - INFO - Shape: (1006, 10)
+2024-12-03 16:37:00,604 - __main__ - INFO - Missing values: 1912
+2024-12-03 16:37:00,606 - __main__ - INFO - Target distribution:
+Returns
+1    0.524851
+0    0.475149
+Name: proportion, dtype: float64
+2024-12-03 16:37:00,616 - __main__ - INFO - 
+Data quality metrics for GOOG:
+2024-12-03 16:37:00,616 - __main__ - INFO - Shape: (1006, 10)
+2024-12-03 16:37:00,617 - __main__ - INFO - Missing values: 1912
+2024-12-03 16:37:00,617 - __main__ - INFO - Target distribution:
+Returns
+1    0.538767
+0    0.461233
+Name: proportion, dtype: float64
+2024-12-03 16:37:00,627 - __main__ - INFO - 
+Data quality metrics for MSFT:
+2024-12-03 16:37:00,628 - __main__ - INFO - Shape: (1006, 10)
+2024-12-03 16:37:00,630 - __main__ - INFO - Missing values: 1912
+2024-12-03 16:37:00,631 - __main__ - INFO - Target distribution:
+Returns
+1    0.525845
+0    0.474155
+Name: proportion, dtype: float64
+2024-12-03 16:37:00,631 - __main__ - INFO - Analyzing data distribution...
+2024-12-03 16:37:00,633 - __main__ - INFO - 
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+2024-12-03 16:37:00,641 - __main__ - INFO - 
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+2024-12-03 16:37:00,642 - __main__ - INFO - 
+Missing values:
+Unnamed: 0       0
+PC1_stock        0
+PC2_stock        0
+PC3_stock        0
+PC4_stock        0
+PC5_stock        0
+Unnamed: 0    2868
+PC1_news      2868
+Target           0
+Ticker           0
+dtype: int64
+2024-12-03 16:37:01,192 - __main__ - INFO - Step 2: Preparing features...
+2024-12-03 16:37:01,192 - __main__ - INFO - Preparing features and target...
+2024-12-03 16:37:01,195 - __main__ - INFO - Step 3: Training model...
+2024-12-03 16:37:01,195 - __main__ - INFO - Training Random Forest model...
+2024-12-03 16:37:11,776 - __main__ - INFO - Cross-validation scores: [0.60455487 0.69772257 0.57763975 0.73291925 0.37136929]
+2024-12-03 16:37:13,549 - __main__ - INFO - Step 4: Evaluating model...
+2024-12-03 16:37:13,549 - __main__ - INFO - 
+=== DETAILED MODEL EVALUATION ===
+2024-12-03 16:37:13,549 - __main__ - INFO - 
+Class Distributions:
+2024-12-03 16:37:13,551 - __main__ - INFO - Training set:
+Target
+1    0.534797
+0    0.465203
+Name: proportion, dtype: float64
+2024-12-03 16:37:13,552 - __main__ - INFO - Test set:
+Target
+1    0.509934
+0    0.490066
+Name: proportion, dtype: float64
+2024-12-03 16:37:13,553 - __main__ - INFO - Predictions:
+Series([], Name: proportion, dtype: float64)
+2024-12-03 16:37:13,553 - __main__ - ERROR - Invalid data or parameter: The 'y_pred' parameter of confusion_matrix must be an array-like. Got None instead.
+2024-12-03 16:37:13,553 - __main__ - INFO - Cleaning up resources...
+2024-12-03 16:37:13,553 - __main__ - ERROR - Application failed: The 'y_pred' parameter of confusion_matrix must be an array-like. Got None instead.
+2024-12-03 16:41:12,466 - __main__ - INFO - === Starting Stock Prediction Model Pipeline ===
+2024-12-03 16:41:12,467 - __main__ - ERROR - Pipeline failed: name 'StockPredictor' is not defined
+2024-12-03 16:41:12,467 - __main__ - INFO - Cleaning up resources...
+2024-12-03 16:41:12,467 - __main__ - ERROR - Application failed: name 'StockPredictor' is not defined
+2024-12-03 16:41:28,974 - __main__ - INFO - === Starting Stock Prediction Model Pipeline ===
+2024-12-03 16:41:28,975 - __main__ - ERROR - Pipeline failed: name 'StockPredictor' is not defined
+2024-12-03 16:41:28,975 - __main__ - INFO - Cleaning up resources...
+2024-12-03 16:41:28,975 - __main__ - ERROR - Application failed: name 'StockPredictor' is not defined
+2024-12-03 16:42:56,577 - __main__ - INFO - === Starting Stock Prediction Model Pipeline ===
+2024-12-03 16:42:56,578 - __main__ - ERROR - Pipeline failed: name 'StockPredictor' is not defined
+2024-12-03 16:42:56,578 - __main__ - INFO - Cleaning up resources...
+2024-12-03 16:42:56,578 - __main__ - ERROR - Application failed: name 'StockPredictor' is not defined
+2024-12-03 16:53:00,800 - INFO - === Starting Stock Prediction Model Pipeline ===
+2024-12-03 16:53:00,802 - INFO - Loading preprocessed data...
+2024-12-03 16:53:00,815 - INFO - 
+Loaded data shapes for AAPL:
+2024-12-03 16:53:00,815 - INFO - Stock data: (1006, 6)
+2024-12-03 16:53:00,815 - INFO - News data: (50, 2)
+2024-12-03 16:53:00,815 - INFO - Processed data: (1006, 47)
+2024-12-03 16:53:00,835 - INFO - 
+Loaded data shapes for GOOG:
+2024-12-03 16:53:00,835 - INFO - Stock data: (1006, 6)
+2024-12-03 16:53:00,835 - INFO - News data: (50, 2)
+2024-12-03 16:53:00,835 - INFO - Processed data: (1006, 47)
+2024-12-03 16:53:00,845 - INFO - 
+Loaded data shapes for MSFT:
+2024-12-03 16:53:00,845 - INFO - Stock data: (1006, 6)
+2024-12-03 16:53:00,845 - INFO - News data: (50, 2)
+2024-12-03 16:53:00,846 - INFO - Processed data: (1006, 47)
+2024-12-03 16:53:00,847 - INFO - Preparing features and target...
+2024-12-03 16:53:00,855 - INFO - Training Random Forest model...
+2024-12-03 16:53:01,842 - INFO - 
+=== Final Results ===
+2024-12-03 16:53:01,842 - INFO - Accuracy: 0.3667
+2024-12-03 16:53:01,842 - INFO - Precision: 0.4231
+2024-12-03 16:53:01,842 - INFO - Recall: 0.7333
+2024-12-03 16:53:01,842 - INFO - F1: 0.5366
+2024-12-03 16:53:01,842 - INFO - Roc_auc: 0.2000
+2024-12-03 16:53:01,842 - INFO - Cleaning up resources...
+2024-12-03 17:02:37,058 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:02:37,058 - ERROR - Pipeline failed: 'StockPredictor' object has no attribute 'load_data'
+2024-12-03 17:02:37,058 - ERROR - Application failed: 'StockPredictor' object has no attribute 'load_data'
+2024-12-03 17:06:05,451 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:06:05,452 - INFO - Loading preprocessed data...
+2024-12-03 17:06:05,463 - ERROR - Error processing AAPL: 'Close'
+2024-12-03 17:06:05,471 - ERROR - Error processing GOOG: 'Close'
+2024-12-03 17:06:05,488 - ERROR - Error processing MSFT: 'Close'
+2024-12-03 17:06:05,488 - ERROR - Pipeline failed: No data was successfully loaded
+2024-12-03 17:06:05,488 - INFO - === Pipeline Completed ===
+2024-12-03 17:06:05,488 - ERROR - Application failed: No data was successfully loaded
+2024-12-03 17:07:43,599 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:07:43,599 - INFO - Loading preprocessed data...
+2024-12-03 17:07:43,599 - INFO - 
+Checking files for AAPL:
+2024-12-03 17:07:43,600 - INFO - Stock file exists: True
+2024-12-03 17:07:43,600 - INFO - News file exists: True
+2024-12-03 17:07:43,600 - INFO - Processed file exists: True
+2024-12-03 17:07:43,604 - INFO - 
+Stock data columns for AAPL: ['Unnamed: 0', 'PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock']
+2024-12-03 17:07:43,604 - INFO - Stock data shape: (1006, 6)
+2024-12-03 17:07:43,605 - INFO - News data columns for AAPL: ['Unnamed: 0', 'PC1_news']
+2024-12-03 17:07:43,612 - INFO - Processed data columns for AAPL: ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'Returns', 'Volatility', 'SMA20', 'SMA50', 'RSI', 'MACD', 'MACD_Signal', 'SMA_5', 'SMA_10', 'SMA_20', 'SMA_50', 'SMA_200', 'EMA_5', 'EMA_10', 'EMA_20', 'EMA_50', 'EMA_200', 'MACD_Hist', 'BB_Upper', 'BB_Middle', 'BB_Lower', 'ATR', 'OBV', 'Stoch_K', 'Stoch_D', 'ROC_5', 'ROC_10', 'ROC_20', 'Momentum_5', 'Momentum_10', 'Momentum_20', 'Volume_SMA_5', 'Volume_SMA_10', 'Volume_SMA_20', 'PVT', 'Volume_ROC', 'Volatility_5', 'Volatility_10', 'Volatility_20']
+2024-12-03 17:07:43,616 - INFO - 
+Checking files for GOOG:
+2024-12-03 17:07:43,616 - INFO - Stock file exists: True
+2024-12-03 17:07:43,616 - INFO - News file exists: True
+2024-12-03 17:07:43,616 - INFO - Processed file exists: True
+2024-12-03 17:07:43,617 - INFO - 
+Stock data columns for GOOG: ['Unnamed: 0', 'PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock']
+2024-12-03 17:07:43,617 - INFO - Stock data shape: (1006, 6)
+2024-12-03 17:07:43,618 - INFO - News data columns for GOOG: ['Unnamed: 0', 'PC1_news']
+2024-12-03 17:07:43,626 - INFO - Processed data columns for GOOG: ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'Returns', 'Volatility', 'SMA20', 'SMA50', 'RSI', 'MACD', 'MACD_Signal', 'SMA_5', 'SMA_10', 'SMA_20', 'SMA_50', 'SMA_200', 'EMA_5', 'EMA_10', 'EMA_20', 'EMA_50', 'EMA_200', 'MACD_Hist', 'BB_Upper', 'BB_Middle', 'BB_Lower', 'ATR', 'OBV', 'Stoch_K', 'Stoch_D', 'ROC_5', 'ROC_10', 'ROC_20', 'Momentum_5', 'Momentum_10', 'Momentum_20', 'Volume_SMA_5', 'Volume_SMA_10', 'Volume_SMA_20', 'PVT', 'Volume_ROC', 'Volatility_5', 'Volatility_10', 'Volatility_20']
+2024-12-03 17:07:43,627 - INFO - 
+Checking files for MSFT:
+2024-12-03 17:07:43,627 - INFO - Stock file exists: True
+2024-12-03 17:07:43,627 - INFO - News file exists: True
+2024-12-03 17:07:43,627 - INFO - Processed file exists: True
+2024-12-03 17:07:43,628 - INFO - 
+Stock data columns for MSFT: ['Unnamed: 0', 'PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock']
+2024-12-03 17:07:43,629 - INFO - Stock data shape: (1006, 6)
+2024-12-03 17:07:43,629 - INFO - News data columns for MSFT: ['Unnamed: 0', 'PC1_news']
+2024-12-03 17:07:43,638 - INFO - Processed data columns for MSFT: ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'Returns', 'Volatility', 'SMA20', 'SMA50', 'RSI', 'MACD', 'MACD_Signal', 'SMA_5', 'SMA_10', 'SMA_20', 'SMA_50', 'SMA_200', 'EMA_5', 'EMA_10', 'EMA_20', 'EMA_50', 'EMA_200', 'MACD_Hist', 'BB_Upper', 'BB_Middle', 'BB_Lower', 'ATR', 'OBV', 'Stoch_K', 'Stoch_D', 'ROC_5', 'ROC_10', 'ROC_20', 'Momentum_5', 'Momentum_10', 'Momentum_20', 'Volume_SMA_5', 'Volume_SMA_10', 'Volume_SMA_20', 'PVT', 'Volume_ROC', 'Volatility_5', 'Volatility_10', 'Volatility_20']
+2024-12-03 17:07:43,644 - INFO - Analyzing data distribution...
+2024-12-03 17:07:43,652 - INFO - 
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+2024-12-03 17:07:43,661 - INFO - 
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+2024-12-03 17:07:43,662 - INFO - 
+Missing values:
+Unnamed: 0       0
+PC1_stock        0
+PC2_stock        0
+PC3_stock        0
+PC4_stock        0
+PC5_stock        0
+Unnamed: 0    2868
+PC1_news      2868
+Target           0
+Ticker           0
+dtype: int64
+2024-12-03 17:07:44,099 - INFO - Preparing features with enhanced preprocessing...
+2024-12-03 17:07:44,100 - ERROR - Pipeline failed: 'Close'
+2024-12-03 17:07:44,100 - INFO - === Pipeline Completed ===
+2024-12-03 17:07:44,100 - ERROR - Application failed: 'Close'
+2024-12-03 17:18:53,983 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:18:53,984 - INFO - Loading preprocessed data...
+2024-12-03 17:18:54,000 - INFO - 
+Processed AAPL:
+2024-12-03 17:18:54,000 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:18:54,000 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:18:54,000 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:18:54,010 - INFO - 
+Processed GOOG:
+2024-12-03 17:18:54,011 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:18:54,011 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:18:54,011 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:18:54,024 - INFO - 
+Processed MSFT:
+2024-12-03 17:18:54,024 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:18:54,024 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:18:54,024 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:18:54,024 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 17:18:54,024 - INFO - Analyzing data distribution...
+2024-12-03 17:18:54,031 - INFO - 
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+2024-12-03 17:18:54,054 - INFO - 
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+2024-12-03 17:18:54,055 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -42,16 +444,26 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+<<<<<<< HEAD
 2024-12-03 19:59:12,296 - INFO - Preparing features from PCA components...
 2024-12-03 19:59:12,297 - WARNING - Found missing values in features, filling with forward fill
 2024-12-03 19:59:12,298 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
 2024-12-03 19:59:12,298 - INFO - Training set shape: (2414, 6)
 2024-12-03 19:59:12,298 - INFO - Test set shape: (604, 6)
 2024-12-03 19:59:12,299 - INFO - Class distribution in training set:
+=======
+2024-12-03 17:18:54,499 - INFO - Preparing features from PCA components...
+2024-12-03 17:18:54,500 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 17:18:54,501 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 17:18:54,501 - INFO - Training set shape: (2414, 6)
+2024-12-03 17:18:54,501 - INFO - Test set shape: (604, 6)
+2024-12-03 17:18:54,502 - INFO - Class distribution in training set:
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Target
 1    0.534797
 0    0.465203
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 19:59:12,299 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:00:04,858 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:00:04,956 - INFO - Optimal threshold found: 0.380
@@ -99,19 +511,67 @@ Processed MSFT:
 Final combined shape: (3018, 8)
 2024-12-03 20:30:04,579 - INFO - Analyzing data distribution...
 2024-12-03 20:30:04,584 - INFO - 
+=======
+2024-12-03 17:18:54,502 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 17:19:51,347 - INFO - Best parameters found: {'n_estimators': 300, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 30, 'class_weight': 'balanced', 'bootstrap': False}
+2024-12-03 17:19:51,463 - INFO - Optimal prediction threshold: 0.35
+2024-12-03 17:19:53,823 - INFO - 
+=== Cross-validation Scores ===
+2024-12-03 17:19:53,823 - INFO - Mean F1: 0.6331 (+/- 0.3013)
+2024-12-03 17:19:53,917 - INFO - 
+=== Final Results ===
+2024-12-03 17:19:53,918 - INFO - Model Performance Metrics:
+2024-12-03 17:19:53,918 - INFO - Accuracy: 0.6043
+2024-12-03 17:19:53,918 - INFO - Precision: 0.5660
+2024-12-03 17:19:53,918 - INFO - Recall: 0.9610
+2024-12-03 17:19:53,918 - INFO - F1: 0.7124
+2024-12-03 17:19:53,918 - INFO - Roc_auc: 0.7371
+2024-12-03 17:19:53,918 - INFO - Cv_f1_mean: 0.6331
+2024-12-03 17:19:53,918 - INFO - Cv_f1_std: 0.1507
+2024-12-03 17:19:53,918 - INFO - 
+Feature Importance Summary:
+2024-12-03 17:19:53,918 - INFO - PC5_stock: 0.2360
+2024-12-03 17:19:53,918 - INFO - PC4_stock: 0.2186
+2024-12-03 17:19:53,918 - INFO - PC3_stock: 0.1563
+2024-12-03 17:19:53,918 - INFO - PC2_stock: 0.1523
+2024-12-03 17:19:53,918 - INFO - PC1_stock: 0.1473
+2024-12-03 17:19:53,918 - INFO - 
+Model saved in directory: model_results/rf_v2_20241203_171953
+2024-12-03 17:19:53,919 - INFO - === Pipeline Completed ===
+2024-12-03 17:28:20,899 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:28:20,901 - INFO - Loading preprocessed data...
+2024-12-03 17:28:20,916 - INFO - 
+Processed AAPL:
+2024-12-03 17:28:20,916 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:28:20,916 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:28:20,916 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:28:20,925 - INFO - 
+Processed GOOG:
+2024-12-03 17:28:20,925 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:28:20,925 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:28:20,925 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:28:20,935 - INFO - 
+Processed MSFT:
+2024-12-03 17:28:20,935 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:28:20,935 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:28:20,936 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:28:20,936 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 17:28:20,936 - INFO - Analyzing data distribution...
+2024-12-03 17:28:20,939 - INFO - 
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
-2024-12-03 20:30:04,601 - INFO - 
+2024-12-03 17:28:20,950 - INFO - 
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
-2024-12-03 20:30:04,604 - INFO - 
+2024-12-03 17:28:20,951 - INFO - 
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -122,16 +582,181 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+2024-12-03 17:28:21,508 - INFO - Preparing features from PCA components...
+2024-12-03 17:28:21,509 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 17:28:21,510 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 17:28:21,510 - INFO - Training set shape: (2414, 6)
+2024-12-03 17:28:21,510 - INFO - Test set shape: (604, 6)
+2024-12-03 17:28:21,511 - INFO - Class distribution in training set:
+Target
+1    0.534797
+0    0.465203
+Name: proportion, dtype: float64
+2024-12-03 17:28:21,511 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 17:29:42,399 - INFO - Best parameters found: {'n_estimators': 300, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 30, 'class_weight': 'balanced', 'bootstrap': False}
+2024-12-03 17:29:42,513 - INFO - Optimal prediction threshold: 0.35
+2024-12-03 17:29:43,838 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 17:29:43,838 - INFO - Accuracy: 0.6043
+2024-12-03 17:29:43,838 - INFO - Precision: 0.5660
+2024-12-03 17:29:43,838 - INFO - Recall: 0.9610
+2024-12-03 17:29:43,839 - INFO - F1: 0.7124
+2024-12-03 17:29:43,839 - INFO - Roc_auc: 0.7371
+2024-12-03 17:29:43,839 - INFO - MAPE: 2257577420.64%
+2024-12-03 17:29:43,839 - INFO - Cv_f1_mean: 0.6331
+2024-12-03 17:29:43,839 - INFO - Cv_f1_std: 0.1507
+2024-12-03 17:29:44,533 - INFO - === Pipeline Completed ===
+2024-12-03 17:31:14,696 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:31:14,698 - INFO - Loading preprocessed data...
+2024-12-03 17:31:14,721 - INFO - 
+Processed AAPL:
+2024-12-03 17:31:14,721 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:31:14,721 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:31:14,721 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:31:14,744 - INFO - 
+Processed GOOG:
+2024-12-03 17:31:14,744 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:31:14,744 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:31:14,744 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:31:14,755 - INFO - 
+Processed MSFT:
+2024-12-03 17:31:14,756 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:31:14,756 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:31:14,756 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:31:14,756 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 17:31:14,756 - INFO - Analyzing data distribution...
+2024-12-03 17:31:14,760 - INFO - 
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+2024-12-03 17:31:14,772 - INFO - 
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+2024-12-03 17:31:14,773 - INFO - 
+Missing values:
+PC1_stock       0
+PC2_stock       0
+PC3_stock       0
+PC4_stock       0
+PC5_stock       0
+PC1_news     2868
+Target          0
+Ticker          0
+dtype: int64
+2024-12-03 17:31:15,208 - INFO - Preparing features from PCA components...
+2024-12-03 17:31:15,208 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 17:31:15,210 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 17:31:15,210 - INFO - Training set shape: (2414, 6)
+2024-12-03 17:31:15,210 - INFO - Test set shape: (604, 6)
+2024-12-03 17:31:15,210 - INFO - Class distribution in training set:
+Target
+1    0.534797
+0    0.465203
+Name: proportion, dtype: float64
+2024-12-03 17:31:15,210 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 17:32:41,428 - INFO - Best parameters found: {'n_estimators': 300, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 30, 'class_weight': 'balanced', 'bootstrap': False}
+2024-12-03 17:32:41,539 - INFO - Optimal prediction threshold: 0.35
+2024-12-03 17:32:43,313 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 17:32:43,314 - INFO - 
+Classification Metrics:
+2024-12-03 17:32:43,314 - INFO - Accuracy:     0.6043
+2024-12-03 17:32:43,314 - INFO - Precision:    0.5660
+2024-12-03 17:32:43,314 - INFO - Recall:       0.9610
+2024-12-03 17:32:43,314 - INFO - F1 Score:     0.7124
+2024-12-03 17:32:43,315 - INFO - ROC AUC:      0.7371
+2024-12-03 17:32:43,315 - INFO - 
+Prediction Error:
+2024-12-03 17:32:43,315 - INFO - MAPE:         43.67%
+2024-12-03 17:32:43,315 - INFO - 
+Confidence Metrics:
+2024-12-03 17:32:43,315 - INFO - High Confidence Accuracy: 0.8244
+2024-12-03 17:32:43,315 - INFO - Confident Predictions:    21.7%
+2024-12-03 17:32:43,315 - INFO - 
+Cross-validation Metrics:
+2024-12-03 17:32:43,315 - INFO - CV F1 Mean:   0.6331
+2024-12-03 17:32:43,315 - INFO - CV F1 Std:    0.1507
+2024-12-03 17:32:44,395 - INFO - === Pipeline Completed ===
+2024-12-03 17:40:24,233 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:40:24,235 - INFO - Loading preprocessed data...
+2024-12-03 17:40:24,245 - INFO - 
+Processed AAPL:
+2024-12-03 17:40:24,245 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:40:24,245 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:40:24,245 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:40:24,254 - INFO - 
+Processed GOOG:
+2024-12-03 17:40:24,254 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:40:24,254 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:40:24,254 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:40:24,267 - INFO - 
+Processed MSFT:
+2024-12-03 17:40:24,267 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:40:24,267 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:40:24,268 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:40:24,269 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 17:40:24,269 - INFO - Analyzing data distribution...
+2024-12-03 17:40:24,271 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+<<<<<<< HEAD
+2024-12-03 20:30:04,601 - INFO - 
+=======
+2024-12-03 17:40:24,277 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+<<<<<<< HEAD
+2024-12-03 20:30:04,604 - INFO - 
+=======
+2024-12-03 17:40:24,278 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
+Missing values:
+PC1_stock       0
+PC2_stock       0
+PC3_stock       0
+PC4_stock       0
+PC5_stock       0
+PC1_news     2868
+Target          0
+Ticker          0
+dtype: int64
+<<<<<<< HEAD
 2024-12-03 20:30:05,054 - INFO - Preparing features from PCA components...
 2024-12-03 20:30:05,055 - WARNING - Found missing values in features, filling with forward fill
 2024-12-03 20:30:05,056 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
 2024-12-03 20:30:05,056 - INFO - Training set shape: (2414, 6)
 2024-12-03 20:30:05,056 - INFO - Test set shape: (604, 6)
 2024-12-03 20:30:05,057 - INFO - Class distribution in training set:
+=======
+2024-12-03 17:40:24,889 - INFO - Preparing features from PCA components...
+2024-12-03 17:40:24,890 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 17:40:24,890 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 17:40:24,890 - INFO - Training set shape: (2414, 6)
+2024-12-03 17:40:24,890 - INFO - Test set shape: (604, 6)
+2024-12-03 17:40:24,891 - INFO - Class distribution in training set:
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Target
 1    0.534797
 0    0.465203
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:30:05,057 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:31:05,078 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:31:05,172 - INFO - Optimal threshold found: 0.380
@@ -160,19 +785,54 @@ Processed MSFT:
 Final combined shape: (3018, 8)
 2024-12-03 20:32:59,731 - INFO - Analyzing data distribution...
 2024-12-03 20:32:59,739 - INFO - 
+=======
+2024-12-03 17:40:24,891 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 17:40:24,891 - ERROR - Pipeline failed: name 'make_scorer' is not defined
+2024-12-03 17:40:24,891 - INFO - === Pipeline Completed ===
+2024-12-03 17:40:24,891 - ERROR - Application failed: name 'make_scorer' is not defined
+2024-12-03 17:42:47,953 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 17:42:47,955 - INFO - Loading preprocessed data...
+2024-12-03 17:42:47,973 - INFO - 
+Processed AAPL:
+2024-12-03 17:42:47,973 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:42:47,973 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:42:47,973 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:42:47,986 - INFO - 
+Processed GOOG:
+2024-12-03 17:42:47,986 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:42:47,986 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:42:47,986 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:42:47,999 - INFO - 
+Processed MSFT:
+2024-12-03 17:42:47,999 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 17:42:47,999 - INFO - News PCA shape: (50, 1)
+2024-12-03 17:42:48,000 - INFO - Combined shape: (1006, 8)
+2024-12-03 17:42:48,001 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 17:42:48,002 - INFO - Analyzing data distribution...
+2024-12-03 17:42:48,005 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:32:59,765 - INFO - 
+=======
+2024-12-03 17:42:48,015 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
+<<<<<<< HEAD
 2024-12-03 20:32:59,767 - INFO - 
+=======
+2024-12-03 17:42:48,016 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -183,16 +843,26 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+<<<<<<< HEAD
 2024-12-03 20:33:00,217 - INFO - Preparing features from PCA components...
 2024-12-03 20:33:00,217 - WARNING - Found missing values in features, filling with forward fill
 2024-12-03 20:33:00,219 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
 2024-12-03 20:33:00,219 - INFO - Training set shape: (2414, 6)
 2024-12-03 20:33:00,219 - INFO - Test set shape: (604, 6)
 2024-12-03 20:33:00,219 - INFO - Class distribution in training set:
+=======
+2024-12-03 17:42:48,496 - INFO - Preparing features from PCA components...
+2024-12-03 17:42:48,498 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 17:42:48,500 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 17:42:48,500 - INFO - Training set shape: (2414, 6)
+2024-12-03 17:42:48,500 - INFO - Test set shape: (604, 6)
+2024-12-03 17:42:48,501 - INFO - Class distribution in training set:
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Target
 1    0.534797
 0    0.465203
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:33:00,219 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:33:51,958 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:33:52,063 - INFO - Optimal threshold found: 0.380
@@ -221,19 +891,76 @@ Processed MSFT:
 Final combined shape: (3018, 8)
 2024-12-03 20:35:52,323 - INFO - Analyzing data distribution...
 2024-12-03 20:35:52,326 - INFO - 
+=======
+2024-12-03 17:42:48,501 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 17:43:54,747 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
+2024-12-03 17:43:54,860 - INFO - Optimal threshold found: 0.380
+2024-12-03 17:43:54,897 - INFO - Out-of-bag score: 0.7444
+2024-12-03 17:43:56,116 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 17:43:56,116 - INFO - 
+Classification Metrics:
+2024-12-03 17:43:56,116 - INFO - Accuracy:     0.5828
+2024-12-03 17:43:56,116 - INFO - Precision:    0.5532
+2024-12-03 17:43:56,116 - INFO - Recall:       0.9448
+2024-12-03 17:43:56,116 - INFO - F1 Score:     0.6978
+2024-12-03 17:43:56,116 - INFO - ROC AUC:      0.7097
+2024-12-03 17:43:56,116 - INFO - 
+Prediction Error:
+2024-12-03 17:43:56,116 - INFO - Weighted MAPE: 45.26%
+2024-12-03 17:43:56,116 - INFO - 
+Confidence-based Metrics:
+2024-12-03 17:43:56,116 - INFO - Confidence ≥0.6:
+2024-12-03 17:43:56,116 - INFO -   Accuracy: 1.0000
+2024-12-03 17:43:56,116 - INFO -   % of Predictions: 0.2%
+2024-12-03 17:43:56,116 - INFO - 
+Cross-validation Metrics:
+2024-12-03 17:43:56,116 - INFO - CV F1 Mean:   0.6091
+2024-12-03 17:43:56,116 - INFO - CV F1 Std:    0.1622
+2024-12-03 17:43:57,210 - INFO - === Pipeline Completed ===
+2024-12-03 18:27:50,541 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 18:27:50,543 - INFO - Loading preprocessed data...
+2024-12-03 18:27:50,559 - INFO - 
+Processed AAPL:
+2024-12-03 18:27:50,559 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:27:50,559 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:27:50,559 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:27:50,571 - INFO - 
+Processed GOOG:
+2024-12-03 18:27:50,571 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:27:50,571 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:27:50,571 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:27:50,579 - INFO - 
+Processed MSFT:
+2024-12-03 18:27:50,580 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:27:50,580 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:27:50,580 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:27:50,580 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 18:27:50,580 - INFO - Analyzing data distribution...
+2024-12-03 18:27:50,581 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:35:52,336 - INFO - 
+=======
+2024-12-03 18:27:50,589 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
+<<<<<<< HEAD
 2024-12-03 20:35:52,338 - INFO - 
+=======
+2024-12-03 18:27:50,589 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -244,16 +971,26 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+<<<<<<< HEAD
 2024-12-03 20:35:52,762 - INFO - Preparing features from PCA components...
 2024-12-03 20:35:52,762 - WARNING - Found missing values in features, filling with forward fill
 2024-12-03 20:35:52,764 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
 2024-12-03 20:35:52,764 - INFO - Training set shape: (2414, 6)
 2024-12-03 20:35:52,764 - INFO - Test set shape: (604, 6)
 2024-12-03 20:35:52,765 - INFO - Class distribution in training set:
+=======
+2024-12-03 18:27:50,992 - INFO - Preparing features from PCA components...
+2024-12-03 18:27:50,993 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 18:27:50,994 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 18:27:50,994 - INFO - Training set shape: (2414, 6)
+2024-12-03 18:27:50,994 - INFO - Test set shape: (604, 6)
+2024-12-03 18:27:50,995 - INFO - Class distribution in training set:
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Target
 1    0.534797
 0    0.465203
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:35:52,765 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:36:44,775 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:36:44,882 - INFO - Optimal threshold found: 0.380
@@ -285,19 +1022,76 @@ Processed MSFT:
 Final combined shape: (3018, 8)
 2024-12-03 20:38:51,357 - INFO - Analyzing data distribution...
 2024-12-03 20:38:51,360 - INFO - 
+=======
+2024-12-03 18:27:50,995 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 18:28:46,377 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
+2024-12-03 18:28:46,471 - INFO - Optimal threshold found: 0.380
+2024-12-03 18:28:46,496 - INFO - Out-of-bag score: 0.7444
+2024-12-03 18:28:47,374 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 18:28:47,374 - INFO - 
+Classification Metrics:
+2024-12-03 18:28:47,374 - INFO - Accuracy:     0.5828
+2024-12-03 18:28:47,375 - INFO - Precision:    0.5532
+2024-12-03 18:28:47,375 - INFO - Recall:       0.9448
+2024-12-03 18:28:47,375 - INFO - F1 Score:     0.6978
+2024-12-03 18:28:47,375 - INFO - ROC AUC:      0.7097
+2024-12-03 18:28:47,375 - INFO - 
+Prediction Error:
+2024-12-03 18:28:47,375 - INFO - Weighted MAPE: 45.26%
+2024-12-03 18:28:47,375 - INFO - 
+Confidence-based Metrics:
+2024-12-03 18:28:47,375 - INFO - Confidence ≥0.6:
+2024-12-03 18:28:47,375 - INFO -   Accuracy: 1.0000
+2024-12-03 18:28:47,375 - INFO -   % of Predictions: 0.2%
+2024-12-03 18:28:47,375 - INFO - 
+Cross-validation Metrics:
+2024-12-03 18:28:47,375 - INFO - CV F1 Mean:   0.6091
+2024-12-03 18:28:47,375 - INFO - CV F1 Std:    0.1622
+2024-12-03 18:28:48,489 - INFO - === Pipeline Completed ===
+2024-12-03 18:36:11,251 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 18:36:11,252 - INFO - Loading preprocessed data...
+2024-12-03 18:36:11,282 - INFO - 
+Processed AAPL:
+2024-12-03 18:36:11,282 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:36:11,282 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:36:11,282 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:36:11,296 - INFO - 
+Processed GOOG:
+2024-12-03 18:36:11,296 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:36:11,296 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:36:11,296 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:36:11,309 - INFO - 
+Processed MSFT:
+2024-12-03 18:36:11,309 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:36:11,309 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:36:11,309 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:36:11,309 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 18:36:11,309 - INFO - Analyzing data distribution...
+2024-12-03 18:36:11,311 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:38:51,368 - INFO - 
+=======
+2024-12-03 18:36:11,319 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
+<<<<<<< HEAD
 2024-12-03 20:38:51,369 - INFO - 
+=======
+2024-12-03 18:36:11,323 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -308,6 +1102,7 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+<<<<<<< HEAD
 2024-12-03 20:38:51,903 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:39:50,125 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:39:50,222 - INFO - Optimal threshold found: 0.300
@@ -337,19 +1132,58 @@ Processed MSFT:
 Final combined shape: (3018, 8)
 2024-12-03 20:41:00,400 - INFO - Analyzing data distribution...
 2024-12-03 20:41:00,402 - INFO - 
+=======
+2024-12-03 18:36:11,881 - INFO - Preparing features with enhanced preprocessing...
+2024-12-03 18:36:11,884 - ERROR - Error in prepare_features: Input X contains NaN.
+SMOTE does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-12-03 18:36:11,884 - ERROR - Pipeline failed: Input X contains NaN.
+SMOTE does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-12-03 18:36:11,884 - INFO - === Pipeline Completed ===
+2024-12-03 18:36:11,884 - ERROR - Application failed: Input X contains NaN.
+SMOTE does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-12-03 18:39:30,886 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 18:39:30,889 - INFO - Loading preprocessed data...
+2024-12-03 18:39:30,909 - INFO - 
+Processed AAPL:
+2024-12-03 18:39:30,909 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:39:30,910 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:39:30,910 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:39:30,946 - INFO - 
+Processed GOOG:
+2024-12-03 18:39:30,947 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:39:30,947 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:39:30,947 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:39:30,968 - INFO - 
+Processed MSFT:
+2024-12-03 18:39:30,969 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:39:30,969 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:39:30,969 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:39:30,970 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 18:39:30,970 - INFO - Analyzing data distribution...
+2024-12-03 18:39:31,002 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:41:00,409 - INFO - 
+=======
+2024-12-03 18:39:31,037 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
+<<<<<<< HEAD
 2024-12-03 20:41:00,410 - INFO - 
+=======
+2024-12-03 18:39:31,042 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -360,6 +1194,7 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+<<<<<<< HEAD
 2024-12-03 20:41:00,856 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:41:53,759 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:41:53,878 - INFO - Optimal threshold found: 0.300
@@ -376,18 +1211,54 @@ dtype: int64
 2024-12-03 20:44:17,487 - INFO - Final combined shape: (3018, 10)
 2024-12-03 20:44:17,487 - INFO - Analyzing data distribution...
 2024-12-03 20:44:17,494 - INFO - 
+=======
+2024-12-03 18:39:31,578 - INFO - Preparing features with enhanced preprocessing...
+2024-12-03 18:39:31,580 - ERROR - Error in prepare_features: Input X contains NaN.
+SMOTE does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-12-03 18:39:31,581 - ERROR - Pipeline failed: Input X contains NaN.
+SMOTE does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-12-03 18:39:31,586 - INFO - === Pipeline Completed ===
+2024-12-03 18:39:31,586 - ERROR - Application failed: Input X contains NaN.
+SMOTE does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-12-03 18:40:49,366 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 18:40:49,368 - INFO - Loading preprocessed data...
+2024-12-03 18:40:49,384 - INFO - 
+Processed AAPL:
+2024-12-03 18:40:49,384 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:40:49,384 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:40:49,384 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:40:49,394 - INFO - 
+Processed GOOG:
+2024-12-03 18:40:49,394 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:40:49,394 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:40:49,395 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:40:49,414 - INFO - 
+Processed MSFT:
+2024-12-03 18:40:49,414 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:40:49,414 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:40:49,414 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:40:49,414 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 18:40:49,415 - INFO - Analyzing data distribution...
+2024-12-03 18:40:49,422 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Overall class distribution:
 Target
 1    0.529821
 0    0.470179
 Name: proportion, dtype: float64
+<<<<<<< HEAD
 2024-12-03 20:44:17,505 - INFO - 
+=======
+2024-12-03 18:40:49,484 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Class distribution by stock:
 Target         0         1
 Ticker                    
 AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
+<<<<<<< HEAD
 2024-12-03 20:44:17,506 - INFO - 
 Missing values:
 Unnamed: 0       0
@@ -467,6 +1338,9 @@ AAPL    0.475149  0.524851
 GOOG    0.461233  0.538767
 MSFT    0.474155  0.525845
 2024-12-03 20:50:44,547 - INFO - 
+=======
+2024-12-03 18:40:49,504 - INFO - 
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
 Missing values:
 PC1_stock       0
 PC2_stock       0
@@ -477,6 +1351,7 @@ PC1_news     2868
 Target          0
 Ticker          0
 dtype: int64
+<<<<<<< HEAD
 2024-12-03 20:50:44,968 - INFO - Training Random Forest model with optimized parameters...
 2024-12-03 20:51:45,946 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
 2024-12-03 20:51:46,052 - INFO - Optimal threshold found: 0.340
@@ -487,3 +1362,245 @@ dtype: int64
 2024-12-03 20:51:46,091 - INFO - GOOG - MAPE: 43.73%, RMSE: 0.46, Accuracy: 0.6436, F1 Score: 0.7447
 2024-12-03 20:51:46,092 - INFO - MSFT - MAPE: 53.02%, RMSE: 0.54, Accuracy: 0.5446, F1 Score: 0.6974
 2024-12-03 20:51:47,252 - INFO - === Pipeline Completed ===
+=======
+2024-12-03 18:40:50,056 - INFO - Preparing features with enhanced preprocessing...
+2024-12-03 18:40:50,408 - INFO - Selected features: ['PC2_stock', 'PC4_stock', 'PC5_stock']
+2024-12-03 18:40:50,408 - INFO - Training set shape after SMOTE: (2582, 3)
+2024-12-03 18:40:50,408 - INFO - Test set shape: (604, 3)
+2024-12-03 18:40:50,409 - INFO - Training enhanced Random Forest model...
+2024-12-03 18:40:50,410 - INFO - Starting RandomizedSearchCV...
+2024-12-03 18:43:54,512 - INFO - Best parameters found: {'oob_score': True, 'n_estimators': 500, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_samples': 0.7, 'max_features': 'sqrt', 'max_depth': 30, 'criterion': 'gini', 'class_weight': 'balanced', 'bootstrap': True}
+2024-12-03 18:43:54,513 - INFO - Best cross-validation score: nan
+2024-12-03 18:43:54,544 - INFO - Optimizing prediction threshold...
+2024-12-03 18:43:54,655 - INFO - 
+Optimal threshold metrics:
+2024-12-03 18:43:54,655 - INFO - Threshold: 0.300
+2024-12-03 18:43:54,655 - INFO - Accuracy: 0.3758
+2024-12-03 18:43:54,655 - INFO - Precision: 0.4286
+2024-12-03 18:43:54,655 - INFO - Recall: 0.6721
+2024-12-03 18:43:54,655 - INFO - F1 Score: 0.5234
+2024-12-03 18:43:54,655 - INFO - Profit Ratio: 0.4286
+2024-12-03 18:43:54,655 - INFO - Risk-Adjusted Score: 0.3569
+2024-12-03 18:43:54,668 - INFO - 
+Top 5 most important features:
+2024-12-03 18:43:54,668 - INFO - PC4_stock: 0.3536
+2024-12-03 18:43:54,668 - INFO - PC5_stock: 0.3481
+2024-12-03 18:43:54,668 - INFO - PC2_stock: 0.2983
+2024-12-03 18:43:54,668 - INFO - 
+Out-of-bag score: 0.6588
+2024-12-03 18:43:55,686 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 18:43:55,686 - INFO - 
+Classification Metrics:
+2024-12-03 18:43:55,686 - INFO - Accuracy:     0.3758
+2024-12-03 18:43:55,686 - INFO - Precision:    0.4286
+2024-12-03 18:43:55,686 - INFO - Recall:       0.6721
+2024-12-03 18:43:55,686 - INFO - F1 Score:     0.5234
+2024-12-03 18:43:55,686 - INFO - ROC AUC:      0.2499
+2024-12-03 18:43:55,686 - INFO - 
+Prediction Error:
+2024-12-03 18:43:55,686 - INFO - Weighted MAPE: 56.99%
+2024-12-03 18:43:55,686 - INFO - 
+Confidence-based Metrics:
+2024-12-03 18:43:55,686 - INFO - 
+Cross-validation Metrics:
+2024-12-03 18:43:55,686 - INFO - CV F1 Mean:   0.6026
+2024-12-03 18:43:55,686 - INFO - CV F1 Std:    0.1234
+2024-12-03 18:43:56,770 - INFO - === Pipeline Completed ===
+2024-12-03 18:53:23,079 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 18:53:23,080 - INFO - Loading preprocessed data...
+2024-12-03 18:53:23,129 - INFO - 
+Processed AAPL:
+2024-12-03 18:53:23,129 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:53:23,129 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:53:23,129 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:53:23,137 - INFO - 
+Processed GOOG:
+2024-12-03 18:53:23,137 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:53:23,137 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:53:23,137 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:53:23,146 - INFO - 
+Processed MSFT:
+2024-12-03 18:53:23,146 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 18:53:23,146 - INFO - News PCA shape: (50, 1)
+2024-12-03 18:53:23,146 - INFO - Combined shape: (1006, 8)
+2024-12-03 18:53:23,146 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 18:53:23,146 - INFO - Adding technical indicators...
+2024-12-03 18:53:23,147 - WARNING - Missing required OHLCV columns for ticker AAPL. Skipping technical indicators.
+2024-12-03 18:53:23,148 - WARNING - Missing required OHLCV columns for ticker GOOG. Skipping technical indicators.
+2024-12-03 18:53:23,148 - WARNING - Missing required OHLCV columns for ticker MSFT. Skipping technical indicators.
+2024-12-03 18:53:23,148 - INFO - 
+Added technical indicators:
+2024-12-03 18:53:23,148 - INFO - Data shape before adding indicators: (3018, 8)
+2024-12-03 18:53:23,148 - INFO - Data shape after adding indicators: (3018, 8)
+2024-12-03 18:53:23,148 - INFO - Preparing features with enhanced preprocessing...
+2024-12-03 18:53:23,778 - INFO - Selected features: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 18:53:23,778 - INFO - Training set shape after SMOTE: (2582, 6)
+2024-12-03 18:53:23,778 - INFO - Test set shape: (604, 6)
+2024-12-03 18:53:23,779 - INFO - Training enhanced ensemble model...
+2024-12-03 18:53:25,689 - INFO - Optimal threshold: 0.300
+2024-12-03 18:53:25,689 - INFO - Best F1 Score: 0.4788
+2024-12-03 18:53:30,451 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 18:53:30,452 - INFO - 
+Classification Metrics:
+2024-12-03 18:53:30,452 - INFO - Accuracy:     0.3477
+2024-12-03 18:53:30,452 - INFO - Precision:    0.4040
+2024-12-03 18:53:30,452 - INFO - Recall:       0.5877
+2024-12-03 18:53:30,452 - INFO - F1 Score:     0.4788
+2024-12-03 18:53:30,452 - INFO - ROC AUC:      0.2374
+2024-12-03 18:53:30,452 - INFO - 
+Trading Metrics:
+2024-12-03 18:53:30,452 - INFO - Profit Ratio: 0.4040
+2024-12-03 18:53:30,452 - INFO - 
+Time Series CV Metrics:
+2024-12-03 18:53:30,452 - INFO - CV F1 Mean:   0.6010
+2024-12-03 18:53:30,452 - INFO - CV F1 Std:    0.1394
+2024-12-03 18:53:30,595 - INFO - 
+Top 10 Most Important Features:
+2024-12-03 18:53:30,596 - INFO - PC5_stock: 0.2117
+2024-12-03 18:53:30,596 - INFO - PC4_stock: 0.1905
+2024-12-03 18:53:30,596 - INFO - PC2_stock: 0.1531
+2024-12-03 18:53:30,596 - INFO - PC1_news: 0.1531
+2024-12-03 18:53:30,596 - INFO - PC3_stock: 0.1464
+2024-12-03 18:53:30,596 - INFO - PC1_stock: 0.1452
+2024-12-03 18:53:30,596 - INFO - === Pipeline Completed ===
+2024-12-03 19:02:18,126 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 19:02:18,126 - ERROR - Pipeline failed: name 'ImprovedStockPredictor' is not defined
+2024-12-03 19:02:18,126 - INFO - === Pipeline Completed ===
+2024-12-03 19:02:18,126 - ERROR - Application failed: name 'ImprovedStockPredictor' is not defined
+2024-12-03 19:02:34,211 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 19:02:34,211 - INFO - Loading preprocessed data...
+2024-12-03 19:02:34,273 - ERROR - Error processing AAPL: Length mismatch: Expected axis has 50 elements, new values have 1006 elements
+2024-12-03 19:02:34,281 - ERROR - Error processing GOOG: Length mismatch: Expected axis has 50 elements, new values have 1006 elements
+2024-12-03 19:02:34,290 - ERROR - Error processing MSFT: Length mismatch: Expected axis has 50 elements, new values have 1006 elements
+2024-12-03 19:02:34,290 - ERROR - Pipeline failed: No data was successfully loaded
+2024-12-03 19:02:34,290 - INFO - === Pipeline Completed ===
+2024-12-03 19:02:34,290 - ERROR - Application failed: No data was successfully loaded
+2024-12-03 19:04:21,711 - INFO - === Starting Enhanced Stock Prediction Pipeline ===
+2024-12-03 19:04:21,712 - INFO - Loading preprocessed data...
+2024-12-03 19:04:21,766 - ERROR - Error processing AAPL: Length mismatch: Expected axis has 50 elements, new values have 1006 elements
+2024-12-03 19:04:21,776 - ERROR - Error processing GOOG: Length mismatch: Expected axis has 50 elements, new values have 1006 elements
+2024-12-03 19:04:21,785 - ERROR - Error processing MSFT: Length mismatch: Expected axis has 50 elements, new values have 1006 elements
+2024-12-03 19:04:21,785 - ERROR - Pipeline failed: No data was successfully loaded
+2024-12-03 19:04:21,785 - INFO - === Pipeline Completed ===
+2024-12-03 19:04:21,785 - ERROR - Application failed: No data was successfully loaded
+2024-12-03 19:05:13,834 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 19:05:13,835 - INFO - Loading preprocessed data...
+2024-12-03 19:05:13,850 - INFO - 
+Processed AAPL:
+2024-12-03 19:05:13,851 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 19:05:13,851 - INFO - News PCA shape: (50, 1)
+2024-12-03 19:05:13,851 - INFO - Combined shape: (1006, 8)
+2024-12-03 19:05:13,861 - INFO - 
+Processed GOOG:
+2024-12-03 19:05:13,861 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 19:05:13,861 - INFO - News PCA shape: (50, 1)
+2024-12-03 19:05:13,861 - INFO - Combined shape: (1006, 8)
+2024-12-03 19:05:13,873 - INFO - 
+Processed MSFT:
+2024-12-03 19:05:13,873 - INFO - Stock PCA shape: (1006, 5)
+2024-12-03 19:05:13,873 - INFO - News PCA shape: (50, 1)
+2024-12-03 19:05:13,873 - INFO - Combined shape: (1006, 8)
+2024-12-03 19:05:13,873 - INFO - 
+Final combined shape: (3018, 8)
+2024-12-03 19:05:13,874 - INFO - Analyzing data distribution...
+2024-12-03 19:05:13,877 - INFO - 
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+2024-12-03 19:05:13,890 - INFO - 
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+2024-12-03 19:05:13,890 - INFO - 
+Missing values:
+PC1_stock       0
+PC2_stock       0
+PC3_stock       0
+PC4_stock       0
+PC5_stock       0
+PC1_news     2868
+Target          0
+Ticker          0
+dtype: int64
+2024-12-03 19:05:14,362 - INFO - Preparing features from PCA components...
+2024-12-03 19:05:14,363 - WARNING - Found missing values in features, filling with forward fill
+2024-12-03 19:05:14,364 - INFO - Features used: ['PC1_stock', 'PC2_stock', 'PC3_stock', 'PC4_stock', 'PC5_stock', 'PC1_news']
+2024-12-03 19:05:14,364 - INFO - Training set shape: (2414, 6)
+2024-12-03 19:05:14,364 - INFO - Test set shape: (604, 6)
+2024-12-03 19:05:14,365 - INFO - Class distribution in training set:
+Target
+1    0.534797
+0    0.465203
+Name: proportion, dtype: float64
+2024-12-03 19:05:14,365 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 19:06:19,451 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
+2024-12-03 19:06:19,559 - INFO - Optimal threshold found: 0.380
+2024-12-03 19:06:19,584 - INFO - Out-of-bag score: 0.7444
+2024-12-03 19:06:20,929 - INFO - 
+=== Model Performance Metrics ===
+2024-12-03 19:06:20,929 - INFO - 
+Classification Metrics:
+2024-12-03 19:06:20,929 - INFO - Accuracy:     0.5828
+2024-12-03 19:06:20,929 - INFO - Precision:    0.5532
+2024-12-03 19:06:20,929 - INFO - Recall:       0.9448
+2024-12-03 19:06:20,929 - INFO - F1 Score:     0.6978
+2024-12-03 19:06:20,929 - INFO - ROC AUC:      0.7097
+2024-12-03 19:06:20,929 - INFO - 
+Prediction Error:
+2024-12-03 19:06:20,929 - INFO - Weighted MAPE: 45.26%
+2024-12-03 19:06:20,929 - INFO - 
+Confidence-based Metrics:
+2024-12-03 19:06:20,929 - INFO - Confidence ≥0.6:
+2024-12-03 19:06:20,929 - INFO -   Accuracy: 1.0000
+2024-12-03 19:06:20,929 - INFO -   % of Predictions: 0.2%
+2024-12-03 19:06:20,929 - INFO - 
+Cross-validation Metrics:
+2024-12-03 19:06:20,929 - INFO - CV F1 Mean:   0.6091
+2024-12-03 19:06:20,929 - INFO - CV F1 Std:    0.1622
+2024-12-03 19:06:22,014 - INFO - === Pipeline Completed ===
+>>>>>>> 70cea1057f157952bc96fa3a5ddaa55fb310bbef
+2024-12-03 21:16:14,592 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 21:16:14,593 - INFO - Loading preprocessed data...
+2024-12-03 21:16:14,660 - INFO - Analyzing data distribution...
+2024-12-03 21:16:14,662 - INFO - 
+Overall class distribution:
+Target
+1    0.529821
+0    0.470179
+Name: proportion, dtype: float64
+2024-12-03 21:16:14,674 - INFO - 
+Class distribution by stock:
+Target         0         1
+Ticker                    
+AAPL    0.475149  0.524851
+GOOG    0.461233  0.538767
+MSFT    0.474155  0.525845
+2024-12-03 21:16:14,674 - INFO - 
+Missing values:
+PC1_stock       0
+PC2_stock       0
+PC3_stock       0
+PC4_stock       0
+PC5_stock       0
+PC1_news     2868
+Target          0
+Ticker          0
+dtype: int64
+2024-12-03 21:16:15,317 - INFO - Training Random Forest model with optimized parameters...
+2024-12-03 21:17:15,900 - INFO - Best parameters found: {'n_estimators': 500, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_samples': 0.8, 'max_features': 'sqrt', 'max_depth': 25, 'class_weight': {0: 1.5, 1: 1}, 'bootstrap': True}
+2024-12-03 21:17:15,995 - INFO - Optimal threshold found: 0.340
+2024-12-03 21:17:16,044 - INFO - Out-of-bag score: 0.6454
+2024-12-03 21:17:16,044 - INFO - 
+=== Per-Stock Performance Metrics ===
+2024-12-03 21:17:16,045 - INFO - AAPL - MAPE: 46.40%, RMSE: 0.48, Accuracy: 0.6250, F1 Score: 0.7387
+2024-12-03 21:17:16,046 - INFO - GOOG - MAPE: 43.73%, RMSE: 0.46, Accuracy: 0.6436, F1 Score: 0.7447
+2024-12-03 21:17:16,047 - INFO - MSFT - MAPE: 53.02%, RMSE: 0.54, Accuracy: 0.5446, F1 Score: 0.6974
+2024-12-03 21:17:16,834 - INFO - === Pipeline Completed ===
