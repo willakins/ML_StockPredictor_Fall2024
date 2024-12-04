@@ -1163,3 +1163,11 @@ Cross-validation Metrics:
 2024-12-03 19:06:20,929 - INFO - CV F1 Mean:   0.6091
 2024-12-03 19:06:20,929 - INFO - CV F1 Std:    0.1622
 2024-12-03 19:06:22,014 - INFO - === Pipeline Completed ===
+2024-12-03 20:43:31,941 - INFO - === Starting Enhanced Stock Prediction Model Pipeline ===
+2024-12-03 20:43:31,941 - INFO - Loading preprocessed data...
+2024-12-03 20:43:31,942 - ERROR - Error processing AAPL: [Errno 2] No such file or directory: 'data/preprocessed/AAPL_processed.csv'
+2024-12-03 20:43:31,944 - ERROR - Error processing GOOG: [Errno 2] No such file or directory: 'data/preprocessed/GOOG_processed.csv'
+2024-12-03 20:43:31,945 - ERROR - Error processing MSFT: [Errno 2] No such file or directory: 'data/preprocessed/MSFT_processed.csv'
+2024-12-03 20:43:31,945 - ERROR - Pipeline failed: No data was successfully loaded
+2024-12-03 20:43:31,945 - INFO - === Pipeline Completed ===
+2024-12-03 20:43:31,945 - ERROR - Application failed: No data was successfully loaded
