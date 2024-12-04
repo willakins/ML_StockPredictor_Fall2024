@@ -82,32 +82,35 @@ class StockPredictor:
         
         for stock in stocks:
             try:
-                # Load the three data files
                 stock_data = pd.read_csv(f'data/preprocessed/{stock}_stock_preprocessed.csv')
                 news_data = pd.read_csv(f'data/preprocessed/{stock}_news_preprocessed.csv')
                 processed_data = pd.read_csv(f'data/preprocessed/{stock}_processed.csv')
                 
-                # Clean up index columns
+                # Clean indices
                 stock_data = stock_data.drop('Unnamed: 0', axis=1, errors='ignore')
                 news_data = news_data.drop('Unnamed: 0', axis=1, errors='ignore')
+                processed_data = processed_data.drop('Unnamed: 0', axis=1, errors='ignore')
                 
-                # Calculate target using Returns from processed data
+                # Reset indices
+                stock_data.reset_index(drop=True, inplace=True)
+                news_data.reset_index(drop=True, inplace=True)
+                processed_data.reset_index(drop=True, inplace=True)
+                
+                # Calculate target and add ticker
                 target = (processed_data['Returns'] > 0).astype(int)
-                
-                # Combine PCA components and target
-                combined = pd.concat([
-                    stock_data,  # PC1_stock through PC5_stock
-                    news_data,   # PC1_news
+                df_combined = pd.concat([
+                    stock_data,
+                    news_data,
                     pd.DataFrame({'Target': target})
                 ], axis=1)
+                df_combined['Ticker'] = stock
                 
-                combined['Ticker'] = stock
-                combined_data.append(combined)
+                # Split this stock's data
+                train_size = int(len(df_combined) * 0.8)
+                train_data = df_combined[:train_size]
+                test_data = df_combined[train_size:]
                 
-                logger.info(f"\nProcessed {stock}:")
-                logger.info(f"Stock PCA shape: {stock_data.shape}")
-                logger.info(f"News PCA shape: {news_data.shape}")
-                logger.info(f"Combined shape: {combined.shape}")
+                combined_data.append((train_data, test_data))
                 
             except Exception as e:
                 logger.error(f"Error processing {stock}: {str(e)}")
@@ -116,46 +119,35 @@ class StockPredictor:
         if not combined_data:
             raise ValueError("No data was successfully loaded")
         
-        final_data = pd.concat(combined_data, ignore_index=True)
-        logger.info(f"\nFinal combined shape: {final_data.shape}")
-        return final_data
+        # Combine all training and testing data separately
+        final_train = pd.concat([x[0] for x in combined_data], ignore_index=True)
+        final_test = pd.concat([x[1] for x in combined_data], ignore_index=True)
+        
+        # Store separate datasets
+        self.train_data = final_train
+        self.test_data = final_test
+        
+        # Return combined dataset for compatibility
+        return pd.concat([final_train, final_test], ignore_index=True)
 
     def prepare_features(self, data):
-        """Prepare features using PCA components"""
-        logger.info('Preparing features from PCA components...')
+        """Prepare features while preserving ticker information"""
+        feature_cols = [col for col in data.columns if col.startswith('PC')]
         
-        try:
-            # Use all PCA components as features
-            feature_cols = [col for col in data.columns 
-                        if col.startswith('PC') and col != 'Unnamed: 0']
-            
-            # Create feature matrix
-            X = data[feature_cols]
-            y = data['Target']
-            
-            # Verify no missing values
-            if X.isnull().any().any():
-                logger.warning("Found missing values in features, filling with forward fill")
-                X = X.fillna(method='ffill').fillna(method='bfill')
-            
-            # Use time series split
-            split_idx = int(len(X) * 0.8)
-            self.X_train = X[:split_idx]
-            self.X_test = X[split_idx:]
-            self.y_train = y[:split_idx]
-            self.y_test = y[split_idx:]
-            
-            logger.info(f"Features used: {feature_cols}")
-            logger.info(f"Training set shape: {self.X_train.shape}")
-            logger.info(f"Test set shape: {self.X_test.shape}")
-            logger.info(f"Class distribution in training set:\n{self.y_train.value_counts(normalize=True)}")
-            
-            return self.X_train, self.X_test, self.y_train, self.y_test
-            
-        except Exception as e:
-            logger.error(f"Error in prepare_features: {str(e)}")
-            logger.error(f"Available columns: {data.columns.tolist()}")
-            raise
+        # Split while maintaining chronological order
+        train_size = int(len(data) * 0.8)
+        
+        # Store tickers before splitting
+        self.train_tickers = data['Ticker'].values[:train_size]
+        self.test_tickers = data['Ticker'].values[train_size:]
+        
+        # Split features and target
+        self.X_train = data[feature_cols].iloc[:train_size]
+        self.X_test = data[feature_cols].iloc[train_size:]
+        self.y_train = data['Target'].iloc[:train_size]
+        self.y_test = data['Target'].iloc[train_size:]
+        
+        return self.X_train, self.X_test, self.y_train, self.y_test
 
     def train_model(self):
         """Enhanced model training with optimized parameters and threshold tuning"""
@@ -332,68 +324,44 @@ class StockPredictor:
 
 
     def evaluate_model(self):
-        """Enhanced evaluation with confidence-based metrics"""
-        # Basic classification metrics
-        metrics = {
-            'accuracy': accuracy_score(self.y_test, self.predictions),
-            'precision': precision_score(self.y_test, self.predictions),
-            'recall': recall_score(self.y_test, self.predictions),
-            'f1': f1_score(self.y_test, self.predictions),
-            'roc_auc': roc_auc_score(self.y_test, self.pred_probas)
-        }
+        """Evaluate model performance per ticker"""
+        # Get predictions and probabilities per ticker
+        ticker_data = {}
+        for ticker in ['AAPL', 'GOOG', 'MSFT']:
+            ticker_mask = self.test_tickers == ticker
+            if any(ticker_mask):  # Only process if we have data for this ticker
+                ticker_data[ticker] = {
+                    'y_true': self.y_test[ticker_mask].values,
+                    'y_pred': self.predictions[ticker_mask],
+                    'y_prob': self.pred_probas[ticker_mask]
+                }
         
-        # Calculate enhanced MAPE using confidence-weighted errors
-        errors = np.abs(self.y_test - self.pred_probas)
-        confidence_weights = self.prediction_confidence + 0.5  # Ensure weights > 0
-        weighted_mape = np.average(errors, weights=confidence_weights) * 100
-        metrics['mape'] = weighted_mape
-        
-        # Confidence-based metrics
-        confidence_thresholds = [0.6, 0.7, 0.8]
-        for threshold in confidence_thresholds:
-            confident_mask = self.prediction_confidence >= threshold
-            if np.any(confident_mask):
-                conf_acc = accuracy_score(
-                    self.y_test[confident_mask], 
-                    self.predictions[confident_mask]
-                )
-                metrics[f'conf_{threshold}_accuracy'] = conf_acc
-                metrics[f'conf_{threshold}_ratio'] = np.mean(confident_mask)
-        
-        # Cross-validation scores
-        tscv = TimeSeriesSplit(n_splits=5)
-        cv_scores = cross_val_score(self.model, self.X_train, self.y_train, 
-                                cv=tscv, scoring='f1', n_jobs=-1)
-        
-        metrics['cv_f1_mean'] = cv_scores.mean()
-        metrics['cv_f1_std'] = cv_scores.std()
-        
-        # Log metrics
-        logger.info("\n=== Model Performance Metrics ===")
-        
-        logger.info("\nClassification Metrics:")
-        logger.info(f"Accuracy:     {metrics['accuracy']:.4f}")
-        logger.info(f"Precision:    {metrics['precision']:.4f}")
-        logger.info(f"Recall:       {metrics['recall']:.4f}")
-        logger.info(f"F1 Score:     {metrics['f1']:.4f}")
-        logger.info(f"ROC AUC:      {metrics['roc_auc']:.4f}")
-        
-        logger.info("\nPrediction Error:")
-        logger.info(f"Weighted MAPE: {metrics['mape']:.2f}%")
-        
-        logger.info("\nConfidence-based Metrics:")
-        for threshold in confidence_thresholds:
-            if f'conf_{threshold}_accuracy' in metrics:
-                logger.info(f"Confidence ≥{threshold:.1f}:")
-                logger.info(f"  Accuracy: {metrics[f'conf_{threshold}_accuracy']:.4f}")
-                logger.info(f"  % of Predictions: {metrics[f'conf_{threshold}_ratio']*100:.1f}%")
-        
-        logger.info("\nCross-validation Metrics:")
-        logger.info(f"CV F1 Mean:   {metrics['cv_f1_mean']:.4f}")
-        logger.info(f"CV F1 Std:    {metrics['cv_f1_std']:.4f}")
+        # Calculate metrics for each ticker
+        logger.info("\n=== Per-Stock Performance Metrics ===")
+        metrics = {}
+        for ticker, data in ticker_data.items():
+            # Skip if no data
+            if len(data['y_true']) == 0:
+                continue
+                
+            # Calculate metrics
+            accuracy = accuracy_score(data['y_true'], data['y_pred'])
+            f1 = f1_score(data['y_true'], data['y_pred'])
+            mape = np.mean(np.abs(data['y_true'] - data['y_prob'])) * 100
+            rmse = np.sqrt(np.mean((data['y_true'] - data['y_prob']) ** 2))
+            
+            metrics[ticker] = {
+                'accuracy': accuracy,
+                'f1': f1,
+                'mape': mape,
+                'rmse': rmse
+            }
+            
+            logger.info(f"{ticker} - MAPE: {mape:.2f}%, RMSE: {rmse:.2f}, "
+                    f"Accuracy: {accuracy:.4f}, F1 Score: {f1:.4f}")
         
         return metrics
-
+        
     def plot_mape_distribution(self):
         """Plot enhanced error distribution across predictions"""
         actual_probs = self.y_test.astype(float)

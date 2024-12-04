@@ -1,13 +1,14 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, RobustScaler
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Bidirectional
-from tensorflow.python.keras.optimizers import Adam
-from tensorflow.python.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tensorflow.python.keras.regularizers import l2
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Bidirectional
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+from tensorflow.keras.regularizers import l2
 import yaml
 import logging
+from sklearn.metrics import accuracy_score, f1_score
 
 logging.basicConfig(level=logging.INFO)
 
@@ -114,11 +115,11 @@ class LSTMStockPredictor:
             verbose=1
         )
         return history
-
+    
     def predict(self, X):
         """
         Make predictions using the trained model.
-
+        
         Args:
             X: Input sequences of shape (samples, sequence_length, features)
         Returns:
@@ -187,7 +188,15 @@ class LSTMStockPredictor:
         mape = np.mean(np.abs((y_true - y_pred) / (y_true + 1e-8))) * 100
         rmse = np.sqrt(np.mean((y_true - y_pred) ** 2))
         
+        y_true_binary = np.where(y_true > 0, 1, 0)
+        y_pred_binary = np.where(y_pred > 0, 1, 0)
+        
+        accuracy = accuracy_score(y_true_binary, y_pred_binary)
+        f1 = f1_score(y_true_binary, y_pred_binary)
+        
         return {
-            'MAPE': mape,
-            'RMSE': rmse
+            'MAPE': mape, 
+            'RMSE': rmse,
+            'Accuracy': accuracy,
+            'F1 Score': f1
         }
