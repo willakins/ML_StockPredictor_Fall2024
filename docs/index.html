@@ -105,6 +105,13 @@
           in the feature space, maximizing the margin between them. SVM is particularly effective for our problem because it can handle high-dimensional data and complex decision boundaries. Its ability to generalize well with a 
           smaller amount of training data makes it suitable for predicting stock market trends, where clear distinctions between price movements are often subtle and nonlinear.
           <br>
+          <h3> Quantitative Metrics </h3>
+          <ul>
+            <li> MAPE (Mean Absolute Percentage Error): Average percentage difference between predicted and actual values </li>
+            <li>RMSE (Root Mean Square Error): The square root of the average squared differences between predicted and actual values, emphasizing larger errors            </li>
+            <li>Accuracy: Proportion of correct predictions (both up and down movements) out of total predictions            </li>
+            <li>F1 Score: Harmonic mean of precision and recall, balancing the model's ability to correctly identify true positives while avoiding false positives            </li>
+          </ul>
           <h3 id="Results"><a id="Results">Results and Discussion</a> </h3>
           <h5>Long Short-Term Memory</h5>
            The first model we are going to discuss is the LSTM model. This model achieved our highest accuracy score of 96%,
@@ -168,11 +175,71 @@
           <br>
           <h5>Quantitative Measures</h5>
           <ul>
-            <li>Achieve an accuracy of at least 60% in predicting the direction of stock price movements</li>
-            <li>Develop a model that outperforms a simple buy-and-hold strategy in terms of Sharpe Ratio (> 1.5)</li>
-            <li>Mean Absolute Percentage Error for price predictions (≤ 5%)</li>
-            <li>F1 Score, a harmonic mean of precision, for trend classification (≥ 0.65)</li>
+            <li> Excels at capturing temporal dependencies in sequential stock price data </li>
+            <li> Can maintain memory of long-term market trands while weighing recent movements </li>
+            <li> Particularly effective for AAPL predictions (14.56% MAPE) due to: </li>
+            <li> Typically more stable price movements </li>
+            <li> Higher trading volume providing more consistent patterns </li>
+            <li> Strong correlation between historical patterns and future movements </li>
           </ul>
+          <p> LSTM Limitations </p>
+          <ul>
+            <li> High MAPE variance between stocks (14.56% to 51.65%) </li>
+            <li> Requires substantial training data </li>
+            <li> May overfit to specific stock patterns</li>
+          </ul>
+          <p> Random Forest Strengths </p>
+          <ul>
+            <li> High recall (0.9448) indicates strong ability to identify actual positive cases </li>
+            <li> Robust to outliers in market data </li>
+            <li> Can handle non-linear relationships in features </li>
+          </ul>
+          <p> Random Forest Limitations </p>
+          <ul>
+            <li> Lower precision (0.5532) suggests many false positives </li>
+            <li> Overall accuracy (0.5828) indicates potential overgeneralization </li>
+            <li> May miss subtle temporal patterns that LSTM captures </li>
+          </ul>
+          <p> SVM Strengths </p>
+          <p> Insight on no MAPE: MAPE requires actual percentage changes in stock prices to calculate the error margin, but SVM is typically used as a classification model that predicts directional movement (up/down) rather than specific price values. Even when SVM regression is used, the model outputs are often scaled or transformed values that don't directly translate to percentage errors, making MAPE an unsuitable metric for evaluating SVM performance in this context. </p>
+          <ul>
+            <li> Consistent performance across stocks (82-88% accuracy) </li>
+            <li> Good balance between precision and recall </li>
+            <li> Effective at handling high-dimensional feature spaces from technical indicators </li>
+          </ul>
+          <p> Limitations </p>
+          <ul>
+            <li> Higher RMSE values (0.35-0.42) than LSTM </li>
+            <li> Less effective at capturing temporal dependencies </li>
+            <li> May struggle with highly volatile market conditions </li>
+          </ul>
+          <p> Key Performance Factors</p>
+          <ol>
+            <li>
+              <p> Data Characteristics </p>
+              <ul>
+                <li> LSTM performs better with clear temporal patterns </li>
+                <li> Random Forest excels with diverse feature sets </li>
+                <li> SVM benefits from normalized, well-structured data </li>
+              </ul>
+            </li>
+            <li>
+              <p> Market Conditions </p>
+              <ul>
+                <li> Model performance varies with market volatility </li>
+                <li> Trading volume affects prediction accuracy </li>
+                <li> Stock-specific factors influence model effectiveness </li>
+              </ul>
+            </li>
+            <li>
+              <p> Feature Engineering Impact </p>
+              <ul>
+                <li> Technical indicators boost Random Forest and SVM performance</li>
+                <li> Temporal features critical for LSTM success </li>
+                <li> Feature selection affects model generalization </li>
+              </ul>
+            </li>
+          </ol>
 
           <h5>Next Steps</h5>
           The next steps involve exploring methodologies to combine the strengths of the three discussed models into a unified, 
