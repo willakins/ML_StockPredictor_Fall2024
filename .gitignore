@@ -24,4 +24,4 @@ data/processed/*
 config/*.yaml
 !config/config.example.yaml
 
-.DS_Store
+.DS_Storevenv_tf/
