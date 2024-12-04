@@ -106,6 +106,18 @@
           smaller amount of training data makes it suitable for predicting stock market trends, where clear distinctions between price movements are often subtle and nonlinear.
           <br>
           <h3 id="Results"><a id="Results">Results and Discussion</a> </h3>
+          <h5>Long Short-Term Memory</h5>
+           The first model we are going to discuss is the LSTM model. This model achieved our highest accuracy score of 96%,
+           leveraging its ability to remember long-term trends while still focusing on recent movements. The three below graphs 
+           illustrate LSTM’s prediction performance over a 200 day period. The y-axis is the cumulative number of positive market days 
+           with the red line being our model’s predictions and the blue line being reality. The small margin of difference between 
+           reality and our model’s prediction emphasizes our model’s power. However, the model exhibited high error variance 
+           indicating inconsistent performance for more volatile stocks. Additionally, LSTM’s reliance on substantial training 
+           data and its tendency to overfit to specific patterns poses a challenge for generalization across diverse market conditions.
+          <img src="./charts/lstm_AAPL_chart.png"style="width:800px;height:500px;"/>
+          <img src="./charts/lstm_GOOG_chart.png"style="width:800px;height:500px;"/>
+          <img src="./charts/lstm_MSFT_chart.png"style="width:800px;height:500px;"/>
+          <br>
           <h5>Random Forest Classifier</h5>
 
           The Random Forest Classifier model performed very poorly, with roughly 50% accuracy.
@@ -116,7 +128,7 @@
           classifications. 
 
           On the first iteration of the model (~50% accurate), we yielded the following charts:
-          <img src="./charts/rfc/permutation_feature_importance_1.png" />
+          <img src="./charts/rfc/permutation_feature_importance_1.png" style="width:800px;height:500px;"/>
           <img src="./charts/rfc/confusion_matrix_1.png" />
 
           According to the PFI chart, MACD, Volatility, and Open were the most importance features, since shuffling values
@@ -141,14 +153,19 @@
 
           The PFI chart is telling us that ALL the features may be negatively impacting the model. Furthermore,
           the confusion matrix shows a greater sum along the incorrect predictions than the correct predictions.
-
-          <h6> Next Steps </h6>
-
-          We need to reconsider our features, as they seem to not be correlated enough (if at all!) with the data set.
-          Many of these features are simply performance metrics of the stock over some period of time. We should only
-          use a couple of these to not take away from other features that are not based on performance. Speaking of,
-          we should also look into using more context-sensitive features, like a sentiment analysis score for the stock's company.
-
+          <br>
+          <br>
+          <h5>Support Vector Machine</h5>
+          Moving on to a more successful model, SVM had similar but slightly worse performance than LSTM. All three below graphs 
+          show a small deviation in the model’s predictions and reality, emphasizing the model’s accuracy, coming out with 
+          an average accuracy of around 85 percent. SVM’s ability to handle high dimensional data lended itself well to our 
+          financial data, but there were still limitations of this architecture. SVM’s higher RMSE value of around .4 highlights 
+          SVM’s limitations to capture temporal dependencies inherent in stock data. Additionally, SVM may struggle with high 
+          volatility market conditions, as it lacks sequential learning capabilities unlike the LSTM model. 
+          <img src="./charts/svm_AAPL_chart.png"style="width:800px;height:500px;"/>
+          <img src="./charts/svm_GOOG_chart.png"style="width:800px;height:500px;"/>
+          <img src="./charts/svm_MSFT_chart.png"style="width:800px;height:500px;"/>
+          <br>
           <h5>Quantitative Measures</h5>
           <ul>
             <li>Achieve an accuracy of at least 60% in predicting the direction of stock price movements</li>
